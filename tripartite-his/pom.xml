@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>tripartite-his-procurement</module>
+        <module>tripartite-nanjing-procurement</module>
     </modules>
     <artifactId>tripartite-his</artifactId>
 
