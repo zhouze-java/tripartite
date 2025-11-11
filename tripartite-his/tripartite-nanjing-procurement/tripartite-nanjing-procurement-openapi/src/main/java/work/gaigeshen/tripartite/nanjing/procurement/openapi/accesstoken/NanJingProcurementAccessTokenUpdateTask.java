@@ -1,6 +1,5 @@
 package work.gaigeshen.tripartite.nanjing.procurement.openapi.accesstoken;
 
-import work.gaigeshen.tripartite.his.procurement.openapi.config.HisProcurementConfig;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.config.NanJingProcurementConfig;
 
 /**
