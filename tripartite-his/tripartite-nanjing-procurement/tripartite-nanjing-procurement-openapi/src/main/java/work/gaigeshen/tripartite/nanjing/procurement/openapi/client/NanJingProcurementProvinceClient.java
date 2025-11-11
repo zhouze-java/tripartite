@@ -1,6 +1,13 @@
 package work.gaigeshen.tripartite.nanjing.procurement.openapi.client;
 
 
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.exception.NanJingProcurementClientException;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.DefaultNanJingProcurementParameters;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.province.NanJingProcurementDirectoryAddInputData;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.province.NanJingProcurementDirectoryListInputData;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.response.province.NanJingProcurementDirectoryAddResponse;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.response.province.NanJingProcurementDirectoryListResponse;
+
 /**
  * 南京两定平台客户端，此客户端只针对省采类型
  *
@@ -8,32 +15,33 @@ package work.gaigeshen.tripartite.nanjing.procurement.openapi.client;
  */
 public interface NanJingProcurementProvinceClient extends NanJingProcurementBasicClient {
 
-    // /**
-    //  * 勾选本院目录
-    //  *
-    //  * @param inputData 请求参数数据部分不能为空
-    //  * @return 响应结果不为空
-    //  * @throws NanJingProcurementClientException 执行请求或者执行业务发生异常
-    //  */
-    // default HisProcurementDirectoryAddResponse addDirectories(HisProcurementDirectoryAddInputData inputData)
-    //         throws NanJingProcurementClientException {
-    //     return execute(new DefaultHisProcurementParameters("ZJ9701", inputData), HisProcurementDirectoryAddResponse.class,
-    //             getHisProcurementConfig().getServiceUri());
-    // }
-    //
-    // /**
-    //  * 获取挂网目录
-    //  *
-    //  * @param inputData 请求参数数据部分不能为空
-    //  * @return 响应结果不为空
-    //  * @throws HisProcurementClientException 执行请求或者执行业务发生异常
-    //  */
-    // default HisProcurementDirectoryListResponse listDirectories(HisProcurementDirectoryListInputData inputData)
-    //         throws HisProcurementClientException {
-    //     return execute(new DefaultHisProcurementParameters("ZJ9700", inputData), HisProcurementDirectoryListResponse.class,
-    //             getHisProcurementConfig().getServiceUri());
-    // }
-    //
+    /**
+     * 获取挂网目录
+     *
+     * @param inputData 请求参数数据部分不能为空
+     * @return 响应结果不为空
+     * @throws NanJingProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default NanJingProcurementDirectoryListResponse listDirectories(NanJingProcurementDirectoryListInputData inputData)
+            throws NanJingProcurementClientException {
+        return execute(new DefaultNanJingProcurementParameters("NJHH002", inputData), NanJingProcurementDirectoryListResponse.class, getNanJingProcurementConfig().getServiceUri());
+    }
+
+
+    /**
+     * 勾选本院目录
+     *
+     * @param inputData 请求参数数据部分不能为空
+     * @return 响应结果不为空
+     * @throws NanJingProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default NanJingProcurementDirectoryAddResponse addDirectories(NanJingProcurementDirectoryAddInputData inputData)
+            throws NanJingProcurementClientException {
+        return execute(new DefaultNanJingProcurementParameters("NJHH004", inputData), NanJingProcurementDirectoryAddResponse.class,
+                getNanJingProcurementConfig().getServiceUri());
+    }
+
+
     // /**
     //  * 获取常用目录
     //  *
