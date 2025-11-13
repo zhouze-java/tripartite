@@ -11,7 +11,7 @@ import work.gaigeshen.tripartite.nanjing.procurement.openapi.config.NanJingProcu
 /**
  * @author gaigeshen
  */
-class DefaultNanJingProcurementOnlineClient extends NanJingProcurementAbstractClient implements NanJingProcurementProvinceClient {
+class DefaultNanJingProcurementOnlineClient extends NanJingProcurementAbstractClient implements HisProcurementOnLineClient {
 
     DefaultNanJingProcurementOnlineClient(NanJingProcurementConfig config, WebExecutor executor) {
         super(config, executor);

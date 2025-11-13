@@ -47,8 +47,7 @@ public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcu
         } catch (Exception e) {
             throw new InterceptingException("could not get new access token", e);
         }
-        NanJingProcurementAccessToken newAccessToken = NanJingProcurementAccessTokenHelper.createAccessToken(
-                config, response.getAccessToken());
+        NanJingProcurementAccessToken newAccessToken = NanJingProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken());
         nanJingProcurementAccessTokenManager.addNewAccessToken(config, newAccessToken);
         headers.putValue("Access-Token", newAccessToken.getAccessToken());
     }

@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * @author zhouze
- * @date 2025/11/7 10:05
- * @description 南京采购平台接口配置
  */
 @Data
 @Builder

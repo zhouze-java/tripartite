@@ -50,6 +50,49 @@ public interface HisProcurementMatClient extends HisProcurementBasicClient {
                 getHisProcurementConfig().getServiceUri());
     }
 
+
+    /**
+     * 获取组套挂网目录
+     *
+     * @param inputData 请求参数
+     * @return 组套目录
+     * @throws HisProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default HisProcurementGroupSuiteMountDirectoriesResponse listGroupSuiteMountDirectories(HisProcurementGroupSuiteMountDirectoriesListInputData inputData)
+            throws HisProcurementClientException {
+        return execute(new DefaultHisProcurementParameters("ZJ9750", inputData), HisProcurementGroupSuiteMountDirectoriesResponse.class,
+                getHisProcurementConfig().getServiceUri());
+    }
+
+    /**
+     * 勾选院内组套目录
+     *
+     * @param inputData 请求参数
+     * @return 组套目录
+     * @throws HisProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default HisProcurementAddGroupSuiteMountDirectoriesResponse addGroupSuiteMountDirectories(HisProcurementGroupSuiteMountDirectoriesAddInputData inputData)
+            throws HisProcurementClientException {
+        return execute(new DefaultHisProcurementParameters("ZJ9751", inputData), HisProcurementAddGroupSuiteMountDirectoriesResponse.class,
+                getHisProcurementConfig().getServiceUri());
+    }
+
+    /**
+     * 获取组套院内目录
+     *
+     * @param inputData 请求参数
+     * @return 组套目录
+     * @throws HisProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default HisProcurementGroupSuiteMountHospitalDirectoriesResponse listGroupSuiteMountDirectories(HisProcurementGroupSuiteMountHospitalDirectoriesListInputData inputData)
+            throws HisProcurementClientException {
+        return execute(new DefaultHisProcurementParameters("ZJ9750", inputData), HisProcurementGroupSuiteMountHospitalDirectoriesResponse.class,
+                getHisProcurementConfig().getServiceUri());
+    }
+
+
+
+
     /**
      * 创建采购订单
      *
