@@ -5,102 +5,110 @@ import lombok.Data;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.NanJingProcurementInputData;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 
 @Data
 public class NanjingDailyRefundData implements NanJingProcurementInputData {
-    /**
-     * 院内退货数据主键
-     */
-    private String hosp_retn_mgt_detl;
 
-    /**
-     * MCS编码
-     */
-    private String mcs_code;
+    private Collection<ListItem> data;
 
-    /**
-     * 省平台产品代码
-     */
-    private String prov_plaf_prod_code;
+    @Data
+    public static class ListItem {
 
-    /**
-     * 产品名称
-     */
-    private String prod_name;
+        /**
+         * 院内退货数据主键
+         */
+        private String hosp_retn_mgt_detl;
 
-    /**
-     * 规格
-     */
-    private String spec;
+        /**
+         * MCS编码
+         */
+        private String mcs_code;
 
-    /**
-     * 型号
-     */
-    private String mol;
+        /**
+         * 省平台产品代码
+         */
+        private String prov_plaf_prod_code;
 
-    /**
-     * 单位
-     */
-    private String unt;
+        /**
+         * 产品名称
+         */
+        private String prod_name;
 
-    /**
-     * 注册证书
-     */
-    private String regcert;
+        /**
+         * 规格
+         */
+        private String spec;
 
-    /**
-     * 生产企业名称
-     */
-    private String prodentp_name;
+        /**
+         * 型号
+         */
+        private String mol;
 
-    /**
-     * 生产企业代码
-     */
-    private String prodentp_code;
+        /**
+         * 单位
+         */
+        private String unt;
 
-    /**
-     * 配送企业名称
-     */
-    private String delventp_name;
+        /**
+         * 注册证书
+         */
+        private String regcert;
 
-    /**
-     * 配送企业代码
-     */
-    private String delventp_code;
+        /**
+         * 生产企业名称
+         */
+        private String prodentp_name;
 
-    /**
-     * 采购价格
-     */
-    private BigDecimal purc_pric;
+        /**
+         * 生产企业代码
+         */
+        private String prodentp_code;
 
-    /**
-     * 退货数量
-     */
-    private Integer retn_cnt;
+        /**
+         * 配送企业名称
+         */
+        private String delventp_name;
 
-    /**
-     * 退货时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private String retn_time;
+        /**
+         * 配送企业代码
+         */
+        private String delventp_code;
 
-    /**
-     * 库房名称
-     */
-    private String stroom_name;
+        /**
+         * 采购价格
+         */
+        private BigDecimal purc_pric;
 
-    /**
-     * 省市平台退货明细 ID
-     */
-    private String prov_plaf_retn_det_id;
+        /**
+         * 退货数量
+         */
+        private Integer retn_cnt;
 
-    /**
-     * 南京平台产品代码
-     */
-    private String nj_plaf_prod_code;
+        /**
+         * 退货时间
+         */
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private String retn_time;
 
-    /**
-     * 南京平台采购订单明细ID
-     */
-    private String nj_plaf_retn_det_id;
+        /**
+         * 库房名称
+         */
+        private String stroom_name;
+
+        /**
+         * 省市平台退货明细 ID
+         */
+        private String prov_plaf_retn_det_id;
+
+        /**
+         * 南京平台产品代码
+         */
+        private String nj_plaf_prod_code;
+
+        /**
+         * 南京平台采购订单明细ID
+         */
+        private String nj_plaf_retn_det_id;
+    }
 }
