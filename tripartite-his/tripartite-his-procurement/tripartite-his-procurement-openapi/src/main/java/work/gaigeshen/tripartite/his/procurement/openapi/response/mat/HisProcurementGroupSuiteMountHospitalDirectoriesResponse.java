@@ -6,8 +6,6 @@ import work.gaigeshen.tripartite.his.procurement.openapi.response.AbstractHisPro
 
 /**
  * @author zhouze
- * @date 2025/11/11 13:54
- * @description 院内组套目录列表
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

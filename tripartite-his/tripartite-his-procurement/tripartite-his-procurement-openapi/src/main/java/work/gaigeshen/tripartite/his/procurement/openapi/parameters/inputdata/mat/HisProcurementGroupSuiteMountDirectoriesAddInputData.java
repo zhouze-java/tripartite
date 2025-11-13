@@ -5,8 +5,6 @@ import work.gaigeshen.tripartite.his.procurement.openapi.parameters.HisProcureme
 
 /**
  * @author zhouze
- * @date 2025/11/11 13:57
- * @description 勾选院内组套目录参数
  */
 @Data
 public class HisProcurementGroupSuiteMountDirectoriesAddInputData implements HisProcurementInputData {

@@ -6,28 +6,28 @@ import work.gaigeshen.tripartite.nanjing.procurement.openapi.response.AbstractNa
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * @author zhouze
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class NanJingProcurementCommonDirectoryQueryResponse extends AbstractNanJingProcurementResponse {
-
+public class NanJingProcurementDirectoryUsedListResponse extends AbstractNanJingProcurementResponse {
     /**
      * 返回结果页数
      */
-    private String currentPageNumber;
+    private Integer currentPageNumber;
 
     /**
      * 返回结果数量（页数）
      */
-    private String totalPageCount;
+    private Integer totalPageCount;
 
     /**
      * 返回结果数量（记录数）
      */
-    private String totalRecordCount;
+    private Integer totalRecordCount;
 
     /**
      * 返回结果集合
@@ -113,9 +113,9 @@ public class NanJingProcurementCommonDirectoryQueryResponse extends AbstractNanJ
         private BigDecimal pubonlnPric;
 
         /**
-         * 更新时间（格式：YYYY-MM-DD HH:mm:ss）
+         * 更新时间（格式：yyyy-MM-dd HH:mm:ss）
          */
-        private String updtTime;
+        private Date updtTime;
 
         /**
          * 规格
@@ -132,4 +132,5 @@ public class NanJingProcurementCommonDirectoryQueryResponse extends AbstractNanJ
          */
         private String trnsDataSouc;
     }
+
 }

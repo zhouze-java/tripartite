@@ -7,8 +7,6 @@ import java.util.Date;
 
 /**
  * @author zhouze
- * @date 2025/11/10 13:27
- * @description TODO
  */
 @Data
 public class NanJingProcurementDirectoryListInputData implements NanJingProcurementInputData {

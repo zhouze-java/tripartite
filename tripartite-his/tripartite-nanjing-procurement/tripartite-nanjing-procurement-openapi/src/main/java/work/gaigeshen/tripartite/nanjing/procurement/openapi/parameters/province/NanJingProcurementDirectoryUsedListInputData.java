@@ -3,12 +3,13 @@ package work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.provinc
 import lombok.Data;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.NanJingProcurementInputData;
 
+import java.util.Date;
+
 /**
  * @author zhouze
  */
 @Data
-public class NanJingProcurementCommonDirectoryQueryInputData implements NanJingProcurementInputData {
-
+public class NanJingProcurementDirectoryUsedListInputData implements NanJingProcurementInputData {
     /**
      * 院内目录ID
      */
@@ -42,21 +43,20 @@ public class NanJingProcurementCommonDirectoryQueryInputData implements NanJingP
     /**
      * 页码
      */
-    private String current;
+    private Integer current;
 
     /**
-     * 每次访问数量，不可超过500
+     * 数量（每次访问数量，不可超过500）
      */
-    private String size;
+    private Integer size;
 
     /**
-     * 最后更新开始时间（格式：YYYY-MM-DD HH:mm:ss）
+     * 最后更新开始时间（格式：yyyy-MM-dd HH:mm:ss）
      */
-    private String strUpTime;
+    private Date strUpTime;
 
     /**
-     * 最后更新结束时间（格式：YYYY-MM-DD HH:mm:ss）
+     * 最后更新结束时间（格式：yyyy-MM-dd HH:mm:ss）
      */
-    private String endUpTime;
-
+    private Date endUpTime;
 }

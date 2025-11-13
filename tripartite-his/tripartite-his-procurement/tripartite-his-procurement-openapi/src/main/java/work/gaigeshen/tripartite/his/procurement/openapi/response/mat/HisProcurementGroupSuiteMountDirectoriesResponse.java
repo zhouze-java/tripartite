@@ -8,8 +8,6 @@ import java.math.BigDecimal;
 
 /**
  * @author zhouze
- * @date 2025/11/11 13:37
- * @description TODO
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
