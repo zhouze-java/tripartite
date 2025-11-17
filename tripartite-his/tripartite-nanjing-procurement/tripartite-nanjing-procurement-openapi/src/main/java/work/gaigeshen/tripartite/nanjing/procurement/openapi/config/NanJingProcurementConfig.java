@@ -55,4 +55,14 @@ public class NanJingProcurementConfig {
     private final String accessTokenUri;
 
     private final String account;
+
+    /**
+     * 两定的机构医药编号
+     */
+    private final String hospitalCode;
+
+    /**
+     * 两定的医药机构名称
+     */
+    private final String hospitalName;
 }

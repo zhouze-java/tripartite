@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import work.gaigeshen.tripartite.core.util.ArgumentValidate;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.config.NanJingProcurementConfig;
-import work.gaigeshen.tripartite.nanjing.procurement.openapi.exception.HisProcurementAccessTokenStoreException;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.exception.NanJingProcurementAccessTokenStoreException;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.exception.NanJingProcurementAccessTokenManagerException;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.exception.NanJingProcurementAccessTokenUpdateException;
 
@@ -54,7 +54,7 @@ public class DefaultNanJingProcurementAccessTokenManager implements NanJingProcu
         }
         try {
             if (!accessTokenStore.save(config, accessToken)) return;
-        } catch (HisProcurementAccessTokenStoreException e) {
+        } catch (NanJingProcurementAccessTokenStoreException e) {
             throw new NanJingProcurementAccessTokenManagerException("Could not add new access token: " + accessToken, e);
         }
         try {
@@ -70,7 +70,7 @@ public class DefaultNanJingProcurementAccessTokenManager implements NanJingProcu
         ArgumentValidate.notNull(config, "config cannot be null");
         try {
             return accessTokenStore.find(config);
-        } catch (HisProcurementAccessTokenStoreException e) {
+        } catch (NanJingProcurementAccessTokenStoreException e) {
             throw new NanJingProcurementAccessTokenManagerException("Could not find access token: " + config, e);
         }
     }

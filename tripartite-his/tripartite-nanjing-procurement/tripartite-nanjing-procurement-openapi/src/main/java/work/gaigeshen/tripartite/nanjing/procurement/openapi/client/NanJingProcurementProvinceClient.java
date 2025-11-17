@@ -22,7 +22,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementDirectoryListResponse listDirectories(NanJingProcurementDirectoryListInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH002", inputData), NanJingProcurementDirectoryListResponse.class, getNanJingProcurementConfig().getServiceUri());
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH002", inputData), NanJingProcurementDirectoryListResponse.class, getNanJingProcurementConfig().getServiceUri());
     }
 
 
@@ -35,7 +35,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementDirectoryAddResponse addDirectories(NanJingProcurementDirectoryAddInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH004", inputData), NanJingProcurementDirectoryAddResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH004", inputData), NanJingProcurementDirectoryAddResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -49,7 +49,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementDirectoryUsedListResponse listUsedDirectories(NanJingProcurementDirectoryUsedListInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH005", inputData), NanJingProcurementDirectoryUsedListResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH005", inputData), NanJingProcurementDirectoryUsedListResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -62,7 +62,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementPurchasePlanCreateResponse createPurchaseOrder(NanJingProcurementPurchasePlanCreateInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH008", inputData), NanJingProcurementPurchasePlanCreateResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH008", inputData), NanJingProcurementPurchasePlanCreateResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -75,7 +75,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementPurchasePlanAddDetailResponse addPurchaseOrderDetails(NanJingProcurementPurchasePlanAddDetailInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH009", inputData), NanJingProcurementPurchasePlanAddDetailResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH009", inputData), NanJingProcurementPurchasePlanAddDetailResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -88,7 +88,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementPurchasePlanSubmitResponse sendPurchaseOrder(NanJingProcurementPurchasePlanSubmitInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH010", inputData), NanJingProcurementPurchasePlanSubmitResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH010", inputData), NanJingProcurementPurchasePlanSubmitResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -101,7 +101,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementOrderDetailQueryResponse listOrders(NanJingProcurementOrderDetailQueryInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH012", inputData), NanJingProcurementOrderDetailQueryResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH012", inputData), NanJingProcurementOrderDetailQueryResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -143,7 +143,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementCreateReturnApplyResponse applyReturn(NanJingProcurementCreateReturnApplyInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH014", inputData), NanJingProcurementCreateReturnApplyResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH014", inputData), NanJingProcurementCreateReturnApplyResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -156,7 +156,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      */
     default NanJingProcurementReturnOrderInfoResponse listReturns(NanJingProcurementReturnOrderInfoInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH015", inputData), NanJingProcurementReturnOrderInfoResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH015", inputData), NanJingProcurementReturnOrderInfoResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
