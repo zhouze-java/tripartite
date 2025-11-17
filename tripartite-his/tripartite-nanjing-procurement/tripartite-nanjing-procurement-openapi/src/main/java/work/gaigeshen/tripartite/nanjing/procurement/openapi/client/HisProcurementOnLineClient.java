@@ -1,6 +1,7 @@
 package work.gaigeshen.tripartite.nanjing.procurement.openapi.client;
 
 
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.config.NanJingProcurementConfig;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.exception.NanJingProcurementClientException;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.DefaultNanJingProcurementParameters;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.online.*;
@@ -13,6 +14,8 @@ import work.gaigeshen.tripartite.nanjing.procurement.openapi.response.AbstractNa
  */
 public interface HisProcurementOnLineClient extends NanJingProcurementBasicClient {
 
+    NanJingProcurementConfig getNanJingProcurementConfig();
+
      /**
       * 网采接口-医院库房耗材每日入库数据
       *
@@ -22,7 +25,7 @@ public interface HisProcurementOnLineClient extends NanJingProcurementBasicClien
       */
      default AbstractNanJingProcurementResponse sendDailyInBoundData(NanJingDailyInBoundData inputData)
              throws NanJingProcurementClientException {
-         return execute(new DefaultNanJingProcurementParameters("ELS7004", inputData), AbstractNanJingProcurementResponse.class,
+         return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "ELS7004", inputData), AbstractNanJingProcurementResponse.class,
                  getNanJingProcurementConfig().getServiceUri());
      }
 
@@ -35,7 +38,7 @@ public interface HisProcurementOnLineClient extends NanJingProcurementBasicClien
      */
     default AbstractNanJingProcurementResponse sendDailyOutBoundData(NanJingDailyOutBoundData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("ELS7005", inputData), AbstractNanJingProcurementResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "ELS7005", inputData), AbstractNanJingProcurementResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -48,7 +51,7 @@ public interface HisProcurementOnLineClient extends NanJingProcurementBasicClien
      */
     default AbstractNanJingProcurementResponse sendDailyRefundData(NanjingDailyRefundData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("ELS7007", inputData), AbstractNanJingProcurementResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "ELS7007", inputData), AbstractNanJingProcurementResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -61,7 +64,7 @@ public interface HisProcurementOnLineClient extends NanJingProcurementBasicClien
      */
     default AbstractNanJingProcurementResponse sendDailyInventorySurplusData(NanJingDailyInventorySurplusData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("ELS7009", inputData), AbstractNanJingProcurementResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "ELS7009", inputData), AbstractNanJingProcurementResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 
@@ -74,7 +77,7 @@ public interface HisProcurementOnLineClient extends NanJingProcurementBasicClien
      */
     default AbstractNanJingProcurementResponse sendDailyInventoryLossData(NanJingDailyInventoryLossData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("ELS7010", inputData), AbstractNanJingProcurementResponse.class,
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "ELS7010", inputData), AbstractNanJingProcurementResponse.class,
                 getNanJingProcurementConfig().getServiceUri());
     }
 }
