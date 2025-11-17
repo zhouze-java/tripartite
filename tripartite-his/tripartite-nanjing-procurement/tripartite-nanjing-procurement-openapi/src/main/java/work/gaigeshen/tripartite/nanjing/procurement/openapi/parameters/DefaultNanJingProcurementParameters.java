@@ -5,8 +5,12 @@ import lombok.Setter;
 import work.gaigeshen.tripartite.core.parameter.converter.JsonParametersConverter;
 import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
 import work.gaigeshen.tripartite.core.parameter.typed.Parameter;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.config.NanJingProcurementConfig;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author gaigeshen
@@ -127,7 +131,7 @@ public class DefaultNanJingProcurementParameters implements NanJingProcurementPa
     @Parameter(name = "input")
     private final InputParameter inputParameter;
 
-    public DefaultNanJingProcurementParameters(String interfaceCode, NanJingProcurementInputData inputData) {
+    public DefaultNanJingProcurementParameters(NanJingProcurementConfig nanJingProcurementConfig, String interfaceCode, NanJingProcurementInputData inputData) {
 
         if (Objects.isNull(interfaceCode)) {
             throw new IllegalArgumentException("interfaceCode cannot be null");
@@ -137,6 +141,44 @@ public class DefaultNanJingProcurementParameters implements NanJingProcurementPa
         }
         this.interfaceCode = interfaceCode;
         this.inputParameter = new InputParameter(inputData);
+
+        this.fixmedinsCode = nanJingProcurementConfig.getHospitalCode();
+        this.fixmedinsName = nanJingProcurementConfig.getHospitalName();
+
+        requireDefaultValue(nanJingProcurementConfig);
+
+        otherDefaultValue();
+    }
+
+    private void otherDefaultValue() {
+        this.devNo = "";
+        this.devSafeInfo = "";
+        this.signType = "";
+        this.signNo = "";
+    }
+
+    private void requireDefaultValue(NanJingProcurementConfig nanJingProcurementConfig) {
+
+
+        this.msgId = MsgIdGenerator.generate(getFixmedinsCode());
+        this.mdtrtareaAdmvs = "320118";
+        this.insuplcAdmdvs = "320118";
+        if (Objects.equals(nanJingProcurementConfig.getType(), NanJingProcurementConfig.PROVINCE_PURCHASE)) {
+            this.recerSysCode = "DHCC";
+        }
+        if (Objects.equals(nanJingProcurementConfig.getType(), NanJingProcurementConfig.ONLINE_PURCHASE)) {
+            this.recerSysCode = "UNKONW";
+        }
+
+        this.infver = "V1.0";
+        this.opterType = "3";
+        this.opter = "spd";
+        this.opterName = "spd";
+        this.infTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+
+        this.fixmedinsSoftFcty = "医贝云服（杭州）科技有限公司";
+
+        this.encType = "";
 
     }
 
@@ -153,5 +195,28 @@ public class DefaultNanJingProcurementParameters implements NanJingProcurementPa
             this.inputData = inputData;
         }
 
+    }
+
+
+
+
+    public static class MsgIdGenerator {
+
+        private static final AtomicInteger SEQ = new AtomicInteger(0);
+        private static final int MAX_SEQ = 9999;
+        private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
+
+        public static String generate(String orgCode) {
+            if (orgCode == null || orgCode.length() != 12) {
+                throw new IllegalArgumentException("机构编号必须为12位");
+            }
+            int seq = SEQ.getAndIncrement();
+            if (seq > MAX_SEQ) {
+                SEQ.set(0);
+                seq = SEQ.getAndIncrement();
+            }
+            String time = FORMAT.format(new Date());
+            return orgCode + time + String.format("%04d", seq);
+        }
     }
 }

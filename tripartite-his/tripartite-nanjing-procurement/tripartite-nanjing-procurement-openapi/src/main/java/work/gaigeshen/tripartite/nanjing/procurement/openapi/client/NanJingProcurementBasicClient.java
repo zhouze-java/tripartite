@@ -32,7 +32,7 @@ public interface NanJingProcurementBasicClient {
      */
     default NanJingProcurementStorehouseListResponse listStorehouses(NanJingProcurementStorehouseListInputData inputData)
             throws NanJingProcurementClientException {
-        return execute(new DefaultNanJingProcurementParameters("NJHH001", inputData), NanJingProcurementStorehouseListResponse.class, getNanJingProcurementConfig().getServiceUri());
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH001", inputData), NanJingProcurementStorehouseListResponse.class, getNanJingProcurementConfig().getServiceUri());
     }
 
 
