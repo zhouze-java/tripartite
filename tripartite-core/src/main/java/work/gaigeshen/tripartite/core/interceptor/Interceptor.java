@@ -77,6 +77,13 @@ public interface Interceptor {
          * @return 请求内容数据
          */
         byte[] bodyBytes();
+
+        /**
+         * 重新设置参数
+         *
+         * @param bodyBytes 请求体
+         */
+        void body(byte[] bodyBytes);
     }
 
     /**

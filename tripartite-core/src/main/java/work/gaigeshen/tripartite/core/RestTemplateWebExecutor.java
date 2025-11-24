@@ -519,7 +519,7 @@ public class RestTemplateWebExecutor implements WebExecutor {
 
         private final HttpRequest httpRequest;
 
-        private final byte[] bodyBytes;
+        private byte[] bodyBytes;
 
         private HttpRequestRequest(HttpRequest httpRequest, byte[] bodyBytes) {
             ArgumentValidate.notNull(httpRequest, "httpRequest cannot be null");
@@ -546,6 +546,11 @@ public class RestTemplateWebExecutor implements WebExecutor {
         @Override
         public byte[] bodyBytes() {
             return bodyBytes;
+        }
+
+        @Override
+        public void body(byte[] bodyBytes) {
+            this.bodyBytes = bodyBytes;
         }
 
         @Override

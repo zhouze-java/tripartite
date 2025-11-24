@@ -20,6 +20,7 @@ public abstract class NanJingProcurementAbstractClient implements NanJingProcure
 
     private final WebExecutor executor;
 
+
     protected NanJingProcurementAbstractClient(NanJingProcurementConfig config, WebExecutor executor) {
         ArgumentValidate.notNull(config, "config cannot be null");
         ArgumentValidate.notNull(executor, "executor cannot be null");
