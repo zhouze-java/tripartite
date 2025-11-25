@@ -11,11 +11,11 @@ public abstract class AbstractNanJingProcurementResponse implements NanJingProcu
     /**
      * 接口返回状态
      */
-    private Integer returnCode;
+    private Integer return_code;
 
     /**
      * 接口返回信息
      */
-    private String returnMsg;
+    private String return_message;
 
 }

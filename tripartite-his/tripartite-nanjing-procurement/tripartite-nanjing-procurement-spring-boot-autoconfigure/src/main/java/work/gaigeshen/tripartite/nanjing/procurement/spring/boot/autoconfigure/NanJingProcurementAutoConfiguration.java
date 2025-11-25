@@ -30,8 +30,8 @@ public class NanJingProcurementAutoConfiguration {
     }
 
     @Bean
-    public NanJingProcurementClients hisProcurementClients() {
-        NanJingProcurementAccessTokenManager accessTokenManager = hisProcurementAccessTokenManager();
+    public NanJingProcurementClients nanJingProcurementClients() {
+        NanJingProcurementAccessTokenManager accessTokenManager = nanJingProcurementAccessTokenManager();
         NanJingProcurementClientCreator hisProcurementClientCreator = new DefaultNanJingProcurementClientCreator(accessTokenManager);
         Collection<NanJingProcurementBasicClient> hisProcurementClients = new ArrayList<>();
         for (NanJingProcurementProperties.Client client : nanJingProcurementProperties.getClients()) {
@@ -45,6 +45,8 @@ public class NanJingProcurementAutoConfiguration {
                     .type(client.getType())
                     .appCode(client.getAppCode())
                     .authCode(client.getAuthCode())
+                    .hospitalName(client.getHospitalName())
+                    .hospitalCode(client.getHospitalCode())
                     .build();
             NanJingProcurementBasicClient procurementClient = hisProcurementClientCreator.create(config);
             hisProcurementClients.add(procurementClient);
@@ -54,20 +56,20 @@ public class NanJingProcurementAutoConfiguration {
     }
 
     @Bean(destroyMethod = "shutdown")
-    public NanJingProcurementAccessTokenManager hisProcurementAccessTokenManager() {
+    public NanJingProcurementAccessTokenManager nanJingProcurementAccessTokenManager() {
         return new DefaultNanJingProcurementAccessTokenManager(
-                hisProcurementAccessTokenStore(), hisProcurementAccessTokenRefresher()
+                nanJingProcurementAccessTokenStore(), nanJingProcurementAccessTokenRefresher()
         );
     }
 
     @Bean
-    public NanJingProcurementAccessTokenRefresher hisProcurementAccessTokenRefresher() {
+    public NanJingProcurementAccessTokenRefresher nanJingProcurementAccessTokenRefresher() {
         return new DefaultNanJingProcurementAccessTokenRefresher(
-                (cfg, oat) -> hisProcurementClients().getClientOrCreate(cfg));
+                (cfg, oat) -> nanJingProcurementClients().getClientOrCreate(cfg));
     }
 
     @Bean
-    public NanJingProcurementAccessTokenStore hisProcurementAccessTokenStore() {
+    public NanJingProcurementAccessTokenStore nanJingProcurementAccessTokenStore() {
         return new DefaultNanJingProcurementAccessTokenStore();
     }
 }

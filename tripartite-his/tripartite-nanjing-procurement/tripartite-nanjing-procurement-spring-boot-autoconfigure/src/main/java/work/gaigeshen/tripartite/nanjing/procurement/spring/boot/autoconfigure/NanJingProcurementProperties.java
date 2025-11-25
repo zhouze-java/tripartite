@@ -40,5 +40,9 @@ public class NanJingProcurementProperties {
         private String authCode;
 
         private String secret;
+
+        private String hospitalName;
+
+        private String hospitalCode;
     }
 }

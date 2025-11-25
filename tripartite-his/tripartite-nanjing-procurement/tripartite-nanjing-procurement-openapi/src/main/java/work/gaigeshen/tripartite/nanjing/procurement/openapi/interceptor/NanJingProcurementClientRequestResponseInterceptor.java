@@ -1,6 +1,8 @@
 package work.gaigeshen.tripartite.nanjing.procurement.openapi.interceptor;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import work.gaigeshen.tripartite.core.interceptor.AbstractInterceptor;
 import work.gaigeshen.tripartite.core.interceptor.InterceptingException;
 import work.gaigeshen.tripartite.core.util.ArgumentValidate;
@@ -18,6 +20,8 @@ import java.util.Objects;
  */
 public class NanJingProcurementClientRequestResponseInterceptor extends AbstractInterceptor {
 
+    private final Logger log = LoggerFactory.getLogger(NanJingProcurementClientRequestResponseInterceptor.class);
+
     private final NanJingProcurementConfig nanJingProcurementConfig;
 
     static {
@@ -31,24 +35,11 @@ public class NanJingProcurementClientRequestResponseInterceptor extends Abstract
 
     @Override
     protected void updateRequest(Request request) throws InterceptingException {
-        // long timestamp = System.currentTimeMillis() / 1000;
-        // String bodyContent = new String(request.bodyBytes(), StandardCharsets.UTF_8);
-        // String account = nanJingProcurementConfig.getAccount();
-        // byte[] secretBytes = nanJingProcurementConfig.getSecret().getBytes(StandardCharsets.UTF_8);
-        // try {
-        //     SecretKey secretKey = new SecretKeySpec(secretBytes, "HmacSm3");
-        //     Mac mac = Mac.getInstance(secretKey.getAlgorithm());
-        //     mac.init(secretKey);
-        //     mac.update((timestamp + "\n").getBytes(StandardCharsets.UTF_8));
-        //     mac.update(bodyContent.getBytes(StandardCharsets.UTF_8));
-        //     byte[] digest = mac.doFinal();
-        //     String digestResult = Hex.toHexString(digest).toLowerCase();
-        //     Headers headers = request.headers();
-        //     headers.putValue("x-ca-key", account);
-        //     headers.putValue("x-ca-signature", timestamp + ":" + digestResult);
-        // } catch (Exception e) {
-        //     throw new InterceptingException("update request signature error", e);
-        // }
+        // 打印原始请求
+        log.info("REQUEST URI: {}", request.url());
+        log.info("REQUEST METHOD: {}", request.method());
+        log.info("REQUEST HEADERS: {}", request.headers());
+        log.info("REQUEST BODY: {}", new String(request.bodyBytes(), StandardCharsets.UTF_8));
     }
 
     @Override
@@ -56,6 +47,8 @@ public class NanJingProcurementClientRequestResponseInterceptor extends Abstract
         String rawResponse;
         try {
             rawResponse = response.bodyString(StandardCharsets.UTF_8);
+
+            log.info("RESPONSE BODY: {}", rawResponse);
         } catch (IOException e) {
             throw new InterceptingException("could not read raw response", e);
         }

@@ -7,7 +7,8 @@ import work.gaigeshen.tripartite.nanjing.procurement.openapi.accesstoken.NanJing
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.accesstoken.NanJingProcurementAccessTokenManager;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.client.NanJingProcurementBasicClient;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.config.NanJingProcurementConfig;
-import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.NanJingProcurementAccessTokenParameters;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.DefaultNanJingProcurementParameters;
+import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.NanJingProcurementAccessTokenInputData;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.response.NanJingProcurementAccessTokenResponse;
 
 import java.nio.charset.StandardCharsets;
@@ -44,10 +45,10 @@ public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcu
             bodyMap.put("access_token", accessToken.getAccessToken());
             return;
         }
-        NanJingProcurementAccessTokenParameters parameters = new NanJingProcurementAccessTokenParameters(config.getAppCode(), config.getAuthCode());
+        NanJingProcurementAccessTokenInputData inputData = new NanJingProcurementAccessTokenInputData(config.getAppCode(), config.getAuthCode());
         NanJingProcurementAccessTokenResponse response;
         try {
-            response = nanJingProcurementBasicClient.execute(parameters, NanJingProcurementAccessTokenResponse.class,
+            response = nanJingProcurementBasicClient.execute(new DefaultNanJingProcurementParameters(config, "ELS7001", inputData), NanJingProcurementAccessTokenResponse.class,
                     config.getAccessTokenUri());
         } catch (Exception e) {
             throw new InterceptingException("could not get new access token", e);

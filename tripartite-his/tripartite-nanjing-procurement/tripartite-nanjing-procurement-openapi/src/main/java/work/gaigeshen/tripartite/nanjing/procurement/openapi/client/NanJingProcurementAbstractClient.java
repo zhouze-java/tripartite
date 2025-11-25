@@ -53,8 +53,8 @@ public abstract class NanJingProcurementAbstractClient implements NanJingProcure
         }
         if (response instanceof AbstractNanJingProcurementResponse) {
             AbstractNanJingProcurementResponse abstractResponse = (AbstractNanJingProcurementResponse) response;
-            if (!Objects.equals(abstractResponse.getReturnCode(), 0)) {
-                throw new NanJingProcurementClientException("[ " + abstractResponse.getReturnCode() + " ] " + abstractResponse.getReturnMsg());
+            if (!Objects.equals(abstractResponse.getReturn_code(), 1)) {
+                throw new NanJingProcurementClientException("[ " + abstractResponse.getReturn_code() + " ] " + abstractResponse.getReturn_message());
             }
         }
         return response;

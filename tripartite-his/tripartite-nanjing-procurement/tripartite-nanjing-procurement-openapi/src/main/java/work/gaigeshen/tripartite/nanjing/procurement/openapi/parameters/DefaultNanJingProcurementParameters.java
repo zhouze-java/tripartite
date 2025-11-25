@@ -128,6 +128,12 @@ public class DefaultNanJingProcurementParameters implements NanJingProcurementPa
     @Parameter(name = "signtype")
     private String signType;
 
+    /**
+     * 签名
+     */
+    @Parameter(name = "cainfo")
+    private String cainfo;
+
     @Parameter(name = "input")
     private final InputParameter inputParameter;
 
@@ -141,9 +147,6 @@ public class DefaultNanJingProcurementParameters implements NanJingProcurementPa
         }
         this.interfaceCode = interfaceCode;
         this.inputParameter = new InputParameter(inputData);
-
-        this.fixmedinsCode = nanJingProcurementConfig.getHospitalCode();
-        this.fixmedinsName = nanJingProcurementConfig.getHospitalName();
 
         requireDefaultValue(nanJingProcurementConfig);
 
@@ -159,25 +162,21 @@ public class DefaultNanJingProcurementParameters implements NanJingProcurementPa
 
     private void requireDefaultValue(NanJingProcurementConfig nanJingProcurementConfig) {
 
-
+        this.fixmedinsCode = nanJingProcurementConfig.getHospitalCode();
+        this.fixmedinsName = nanJingProcurementConfig.getHospitalName();
         this.msgId = MsgIdGenerator.generate(getFixmedinsCode());
-        this.mdtrtareaAdmvs = "320118";
-        this.insuplcAdmdvs = "320118";
-        if (Objects.equals(nanJingProcurementConfig.getType(), NanJingProcurementConfig.PROVINCE_PURCHASE)) {
-            this.recerSysCode = "DHCC";
-        }
-        if (Objects.equals(nanJingProcurementConfig.getType(), NanJingProcurementConfig.ONLINE_PURCHASE)) {
-            this.recerSysCode = "UNKONW";
-        }
+        this.mdtrtareaAdmvs = "320100";
+        this.insuplcAdmdvs = "320100";
+        this.recerSysCode = "SPD";
+
+        this.cainfo = "04a6776be9196b4bc6fb67e3834b3ad0469859bd77ce457c188724cba619cf4d69ff2db1dee8acde86f963775445ab349191729b93e4ddf4b134eadca57052cf07b796d188817ea3b0ee559fea30fc39fd288cfd74ae7711a7e9a6c961dae4f206b52b5488fa33dc79cbd2485724506f75c4dbe956993c25ebf6a49a5867f22c47";
 
         this.infver = "V1.0";
-        this.opterType = "3";
-        this.opter = "spd";
-        this.opterName = "spd";
+        this.opterType = "1";
+        this.opter = "admin";
+        this.opterName = "admin";
         this.infTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-
         this.fixmedinsSoftFcty = "医贝云服（杭州）科技有限公司";
-
         this.encType = "";
 
     }
