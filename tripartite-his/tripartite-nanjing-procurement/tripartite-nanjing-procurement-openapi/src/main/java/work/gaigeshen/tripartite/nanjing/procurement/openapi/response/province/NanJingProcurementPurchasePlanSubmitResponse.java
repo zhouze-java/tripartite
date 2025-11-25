@@ -20,7 +20,7 @@ public class NanJingProcurementPurchasePlanSubmitResponse extends AbstractNanJin
      * 采购订单提交时间（yyyy-MM-dd HH:mm:ss）
      * 如果是发送订单，代表订单发送时间
      */
-    private Date purcAddTime;
+    private String purcAddTime;
 
     /**
      * 采购订单编码

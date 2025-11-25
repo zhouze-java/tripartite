@@ -156,17 +156,17 @@ public class NanJingProcurementReturnOrderInfoResponse extends AbstractNanJingPr
         /**
          * 申请退货时间（医疗机构）
          */
-        private Date medinsRetnTime;
+        private String medinsRetnTime;
 
         /**
          * 配送企业通过时间
          */
-        private Date delventpPassTime;
+        private String delventpPassTime;
 
         /**
          * 配送企业不通过时间
          */
-        private Date delventpFailTime;
+        private String delventpFailTime;
 
         /**
          * 医疗机构退货原因

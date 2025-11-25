@@ -1,5 +1,6 @@
 package work.gaigeshen.tripartite.nanjing.procurement.openapi.interceptor;
 
+import lombok.extern.slf4j.Slf4j;
 import work.gaigeshen.tripartite.core.interceptor.InterceptingException;
 import work.gaigeshen.tripartite.core.util.json.JsonUtils;
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.accesstoken.NanJingProcurementAccessToken;
@@ -12,12 +13,14 @@ import work.gaigeshen.tripartite.nanjing.procurement.openapi.parameters.NanJingP
 import work.gaigeshen.tripartite.nanjing.procurement.openapi.response.NanJingProcurementAccessTokenResponse;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /**
  * @author gaigeshen
  */
+@Slf4j
 public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcurementClientRequestResponseInterceptor {
 
     private final NanJingProcurementBasicClient nanJingProcurementBasicClient;
@@ -38,26 +41,38 @@ public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcu
         String bodyContent = new String(request.bodyBytes(), StandardCharsets.UTF_8);
         Map<String, Object> bodyMap = JsonUtils.decodeObject(bodyContent);
 
-
         NanJingProcurementConfig config = nanJingProcurementBasicClient.getNanJingProcurementConfig();
         NanJingProcurementAccessToken accessToken = nanJingProcurementAccessTokenManager.findAccessToken(config);
+
         if (Objects.nonNull(accessToken) && !NanJingProcurementAccessTokenHelper.isExpired(accessToken)) {
-            bodyMap.put("access_token", accessToken.getAccessToken());
-            return;
+            setRequestToken(bodyMap, accessToken);
+        } else {
+            NanJingProcurementAccessTokenInputData inputData = new NanJingProcurementAccessTokenInputData(config.getAppCode(), config.getAuthCode());
+            NanJingProcurementAccessTokenResponse response;
+            try {
+                response = nanJingProcurementBasicClient.execute(
+                        new DefaultNanJingProcurementParameters(config, "ELS7001", inputData),
+                        NanJingProcurementAccessTokenResponse.class,
+                        config.getAccessTokenUri());
+            } catch (Exception e) {
+                throw new InterceptingException("could not get new access token", e);
+            }
+            NanJingProcurementAccessToken newAccessToken = NanJingProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken());
+            nanJingProcurementAccessTokenManager.addNewAccessToken(config, newAccessToken);
+
+            setRequestToken(bodyMap, newAccessToken);
         }
-        NanJingProcurementAccessTokenInputData inputData = new NanJingProcurementAccessTokenInputData(config.getAppCode(), config.getAuthCode());
-        NanJingProcurementAccessTokenResponse response;
-        try {
-            response = nanJingProcurementBasicClient.execute(new DefaultNanJingProcurementParameters(config, "ELS7001", inputData), NanJingProcurementAccessTokenResponse.class,
-                    config.getAccessTokenUri());
-        } catch (Exception e) {
-            throw new InterceptingException("could not get new access token", e);
-        }
-        NanJingProcurementAccessToken newAccessToken = NanJingProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken());
-        nanJingProcurementAccessTokenManager.addNewAccessToken(config, newAccessToken);
-        bodyMap.put("access_token", newAccessToken.getAccessToken());
 
         String encode = JsonUtils.encode(bodyMap);
         request.body(encode.getBytes(StandardCharsets.UTF_8));
+    }
+
+    private static void setRequestToken(Map<String, Object> bodyMap, NanJingProcurementAccessToken newAccessToken) {
+        Map<String, Object> inputMap = (Map<String, Object>) bodyMap.get("input");
+        if (inputMap == null) {
+            inputMap = new HashMap<>();
+            bodyMap.put("input", inputMap);
+        }
+        inputMap.put("access_token", newAccessToken.getAccessToken());
     }
 }

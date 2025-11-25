@@ -23,7 +23,7 @@ public class NanJingProcurementPurchasePlanCreateResponse extends AbstractNanJin
     /**
      * 采购订单创建时间（格式：yyyy-MM-dd HH:mm:ss）
      */
-    private Date purcAddTime;
+    private String purcAddTime;
 
     /**
      * 采购计划单编码

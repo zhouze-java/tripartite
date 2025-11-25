@@ -20,7 +20,7 @@ public class NanJingProcurementPurchasePlanAddDetailResponse extends AbstractNan
     /**
      * 添加时间（yyyy-MM-dd HH:mm:ss）
      */
-    private Date purcAddTime;
+    private String purcAddTime;
 
     /**
      * 采购订单编码

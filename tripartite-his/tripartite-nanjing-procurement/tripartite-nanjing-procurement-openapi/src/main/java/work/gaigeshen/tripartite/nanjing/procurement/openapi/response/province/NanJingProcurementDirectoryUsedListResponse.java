@@ -115,7 +115,7 @@ public class NanJingProcurementDirectoryUsedListResponse extends AbstractNanJing
         /**
          * 更新时间（格式：yyyy-MM-dd HH:mm:ss）
          */
-        private Date updtTime;
+        private String updtTime;
 
         /**
          * 规格

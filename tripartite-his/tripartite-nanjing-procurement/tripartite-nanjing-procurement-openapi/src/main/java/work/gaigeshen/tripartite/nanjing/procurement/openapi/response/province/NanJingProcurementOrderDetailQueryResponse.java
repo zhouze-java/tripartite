@@ -137,12 +137,12 @@ public class NanJingProcurementOrderDetailQueryResponse extends AbstractNanJingP
         /**
          * 创建时间
          */
-        private Date adddTime;
+        private String adddTime;
 
         /**
          * 订单提交时间
          */
-        private Date subTime;
+        private String subTime;
 
         /**
          * 备注
@@ -162,7 +162,7 @@ public class NanJingProcurementOrderDetailQueryResponse extends AbstractNanJingP
         /**
          * 配送时间
          */
-        private Date disTime;
+        private String disTime;
 
         /**
          * 收货数量
@@ -172,7 +172,7 @@ public class NanJingProcurementOrderDetailQueryResponse extends AbstractNanJingP
         /**
          * 收货时间
          */
-        private Date wanTime;
+        private String wanTime;
 
         /**
          * 配送状态（1：待发货，2：已发货，3：已收货，4：已作废）
