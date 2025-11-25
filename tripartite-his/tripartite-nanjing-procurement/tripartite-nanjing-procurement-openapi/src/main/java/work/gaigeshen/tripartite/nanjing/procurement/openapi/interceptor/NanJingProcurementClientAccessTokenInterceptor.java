@@ -55,7 +55,7 @@ public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcu
         }
         NanJingProcurementAccessToken newAccessToken = NanJingProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken());
         nanJingProcurementAccessTokenManager.addNewAccessToken(config, newAccessToken);
-        bodyMap.put("access_token", accessToken.getAccessToken());
+        bodyMap.put("access_token", newAccessToken.getAccessToken());
 
         String encode = JsonUtils.encode(bodyMap);
         request.body(encode.getBytes(StandardCharsets.UTF_8));

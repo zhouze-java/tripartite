@@ -12,6 +12,7 @@ import work.gaigeshen.tripartite.nanjing.procurement.openapi.config.NanJingProcu
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.Security;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -61,6 +62,19 @@ public class NanJingProcurementClientRequestResponseInterceptor extends Abstract
         if (Objects.isNull(output) || !output.containsKey("data")) {
             throw new InterceptingException("response output or output data not found: " + rawResponse);
         }
-        response.changeBody(JsonUtils.encode(output.get("data")));
+        Map<?, ?> dataRaw = (Map<?, ?>) output.get("data");
+        Map<String, Object> data = new HashMap<>();
+        for (Map.Entry<?, ?> entry : dataRaw.entrySet()) {
+            if (entry.getKey() instanceof String) {
+                data.put((String) entry.getKey(), entry.getValue());
+            }
+        }
+
+        // 处理令牌没有过期的情况
+        if ("9".equals(String.valueOf(data.get("return_code")))) {
+            data.put("return_code", "1");
+        }
+
+        response.changeBody(JsonUtils.encode(data));
     }
 }
