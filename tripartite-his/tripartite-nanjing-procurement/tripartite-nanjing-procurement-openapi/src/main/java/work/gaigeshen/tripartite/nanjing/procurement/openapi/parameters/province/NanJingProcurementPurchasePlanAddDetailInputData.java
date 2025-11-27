@@ -17,7 +17,7 @@ public class NanJingProcurementPurchasePlanAddDetailInputData implements NanJing
     /**
      * 采购订单编号（由创建接口返回的 PurcCode）
      */
-    private String purcCode;
+    private String PurcCode;
 
     /**
      * 操作状态（2：提交，-1：暂存）
@@ -32,7 +32,7 @@ public class NanJingProcurementPurchasePlanAddDetailInputData implements NanJing
     /**
      * 采购明细集合
      */
-    private Collection<Item> list;
+    private Collection<Item> List;
 
     @Data
     public static class Item {

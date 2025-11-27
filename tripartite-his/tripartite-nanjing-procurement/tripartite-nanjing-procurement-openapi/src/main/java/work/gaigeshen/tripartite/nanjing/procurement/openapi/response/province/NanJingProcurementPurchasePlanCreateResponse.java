@@ -6,7 +6,6 @@ import work.gaigeshen.tripartite.nanjing.procurement.openapi.response.AbstractNa
 
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * @author zhouze
@@ -18,12 +17,12 @@ public class NanJingProcurementPurchasePlanCreateResponse extends AbstractNanJin
     /**
      * 采购计划单编号（计划单唯一编号）
      */
-    private String purcCode;
+    private String PurcCode;
 
     /**
      * 采购订单创建时间（格式：yyyy-MM-dd HH:mm:ss）
      */
-    private String purcAddTime;
+    private String PurcAddTime;
 
     /**
      * 采购计划单编码

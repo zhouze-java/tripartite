@@ -14,7 +14,7 @@ public class NanJingProcurementPurchasePlanSubmitInputData implements NanJingPro
     /**
      * 采购订单编号（由创建接口返回的 PurcCode 字段）
      */
-    private String purcCode;
+    private String PurcCode;
 
     /**
      * 配送地址ID（默认配送地址ID）
