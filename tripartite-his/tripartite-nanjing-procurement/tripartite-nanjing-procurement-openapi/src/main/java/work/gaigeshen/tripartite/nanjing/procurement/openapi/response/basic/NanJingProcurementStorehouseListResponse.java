@@ -69,5 +69,9 @@ public class NanJingProcurementStorehouseListResponse extends AbstractNanJingPro
          */
         private String defFlag;
 
+        /**
+         * 是否默认耗材地址
+         */
+        private String mcsFlag;
     }
 }
