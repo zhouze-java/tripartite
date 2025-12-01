@@ -152,7 +152,7 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
      *
      * @param inputData 请求参数数据部分不能为空
      * @return 响应结果不为空
-     * @throws NanJingProcurementClientException 响应结果不为空
+     * @throws NanJingProcurementClientException 执行请求或者执行业务发生异常
      */
     default NanJingProcurementReturnOrderInfoResponse listReturns(NanJingProcurementReturnOrderInfoInputData inputData)
             throws NanJingProcurementClientException {
@@ -160,56 +160,40 @@ public interface NanJingProcurementProvinceClient extends NanJingProcurementBasi
                 getNanJingProcurementConfig().getServiceUri());
     }
 
-    // /**
-    //  * 创建结算单
-    //  *
-    //  * @param inputData 请求参数数据部分不能为空
-    //  * @return 响应结果不为空
-    //  * @throws HisProcurementClientException 执行请求或者执行业务发生异常
-    //  */
-    // default HisProcurementStatementCreateResponse createStatement(HisProcurementStatementCreateInputData inputData)
-    //         throws HisProcurementClientException {
-    //     return execute(new DefaultHisProcurementParameters("ZJ9716", inputData), HisProcurementStatementCreateResponse.class,
-    //             getHisProcurementConfig().getServiceUri());
-    // }
-    //
-    // /**
-    //  * 添加结算单明细
-    //  *
-    //  * @param inputData 请求参数数据部分不能为空
-    //  * @return 响应结果不为空
-    //  * @throws HisProcurementClientException 执行请求或者执行业务发生异常
-    //  */
-    // default HisProcurementStatementDetailAddResponse addStatementDetails(HisProcurementStatementDetailAddInputData inputData)
-    //         throws HisProcurementClientException {
-    //     return execute(new DefaultHisProcurementParameters("ZJ9717", inputData), HisProcurementStatementDetailAddResponse.class,
-    //             getHisProcurementConfig().getServiceUri());
-    // }
-    //
-    // /**
-    //  * 提交结算单
-    //  *
-    //  * @param inputData 请求参数数据部分不能为空
-    //  * @return 响应结果不为空
-    //  * @throws HisProcurementClientException 执行请求或者执行业务发生异常
-    //  */
-    // default HisProcurementStatementSubmitResponse submitStatement(HisProcurementStatementSubmitInputData inputData)
-    //         throws HisProcurementClientException {
-    //     return execute(new DefaultHisProcurementParameters("ZJ9718", inputData), HisProcurementStatementSubmitResponse.class,
-    //             getHisProcurementConfig().getServiceUri());
-    // }
-    //
-    // /**
-    //  * 审核结算单
-    //  *
-    //  * @param inputData 请求参数数据部分不能为空
-    //  * @return 响应结果不为空
-    //  * @throws HisProcurementClientException 执行请求或者执行业务发生异常
-    //  */
-    // default HisProcurementStatementExamineResponse examineStatement(HisProcurementStatementExamineInputData inputData)
-    //         throws HisProcurementClientException {
-    //     return execute(new DefaultHisProcurementParameters("ZJ9719", inputData), HisProcurementStatementExamineResponse.class,
-    //             getHisProcurementConfig().getServiceUri());
-    // }
+    /**
+     * 获取应急采购目录
+     * @param inputData 请求参数数据部分不能为空
+     * @return 响应结果不为空
+     * @throws NanJingProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default NanJingProcurementEmergencyCatalogResponse listEmergencyCatalog(NanJingProcurementEmergencyCatalogInputData inputData)
+            throws NanJingProcurementClientException {
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH016", inputData), NanJingProcurementEmergencyCatalogResponse.class,
+                getNanJingProcurementConfig().getServiceUri());
+    }
+
+    /**
+     * 创建应急采购计划
+     * @param inputData 请求参数数据部分不能为空
+     * @return 响应结果不为空
+     * @throws NanJingProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default NanJingProcurementEmergencyPlanCreateResponse createEmergencyPlan(NanJingProcurementEmergencyPlanCreateInputData inputData)
+        throws NanJingProcurementClientException {
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH017", inputData), NanJingProcurementEmergencyPlanCreateResponse.class,
+                getNanJingProcurementConfig().getServiceUri());
+    }
+
+    /**
+     * 添加应急采购计划明细
+     * @param inputData 请求参数数据部分不能为空
+     * @return 响应结果不为空
+     * @throws NanJingProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default NanJingProcurementAddEmergencyPlanDetailResponse addEmergencyPlanDetail(NanJingProcurementAddEmergencyPlanDetailInputData inputData)
+            throws NanJingProcurementClientException {
+        return execute(new DefaultNanJingProcurementParameters(getNanJingProcurementConfig(), "NJHH018", inputData), NanJingProcurementAddEmergencyPlanDetailResponse.class,
+                getNanJingProcurementConfig().getServiceUri());
+    }
 
 }
