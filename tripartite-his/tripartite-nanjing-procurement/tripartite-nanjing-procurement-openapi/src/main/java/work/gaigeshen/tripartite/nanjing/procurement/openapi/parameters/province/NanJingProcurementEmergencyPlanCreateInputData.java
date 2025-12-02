@@ -73,7 +73,7 @@ public class NanJingProcurementEmergencyPlanCreateInputData implements NanJingPr
         /**
          * 采购数量（必须 > 0）
          */
-        private Integer purcCnt;
+        private BigDecimal purcCnt;
 
         /**
          * 医院采购价
