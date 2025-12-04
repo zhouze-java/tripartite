@@ -41,10 +41,6 @@ public class HisProcurementClientRequestResponseInterceptor extends AbstractInte
     @Override
     protected void updateRequest(Request request) throws InterceptingException {
         // 打印原始请求
-        log.info("REQUEST URI1: {}", request.url());
-        log.info("REQUEST METHOD1: {}", request.method());
-        log.info("REQUEST HEADERS1: {}", request.headers());
-        log.info("REQUEST BODY1: {}", new String(request.bodyBytes(), StandardCharsets.UTF_8));
         long timestamp = System.currentTimeMillis() / 1000;
         String bodyContent = new String(request.bodyBytes(), StandardCharsets.UTF_8);
         String account = hisProcurementConfig.getAccount();
@@ -60,7 +56,6 @@ public class HisProcurementClientRequestResponseInterceptor extends AbstractInte
             Headers headers = request.headers();
             headers.putValue("x-ca-key", account);
             headers.putValue("x-ca-signature", timestamp + ":" + digestResult);
-            log.info("REQUEST HEADERS2: {}", headers);
         } catch (Exception e) {
             throw new InterceptingException("update request signature error", e);
         }
@@ -71,7 +66,6 @@ public class HisProcurementClientRequestResponseInterceptor extends AbstractInte
         String rawResponse;
         try {
             rawResponse = response.bodyString(StandardCharsets.UTF_8);
-            log.info("RESPONSE BODY1: {}", rawResponse);
         } catch (IOException e) {
             throw new InterceptingException("could not read raw response", e);
         }
