@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import work.gaigeshen.jiangsu.openapi.accesstoken.JiangSuProcurementAccessTokenManager;
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementClientCreationException;
-import work.gaigeshen.jiangsu.openapi.interceptor.NanJingProcurementClientAccessTokenInterceptor;
+import work.gaigeshen.jiangsu.openapi.interceptor.JiangSuProcurementClientAccessTokenInterceptor;
 import work.gaigeshen.tripartite.core.util.ArgumentValidate;
 
 import java.util.Objects;
@@ -36,7 +36,7 @@ public class DefaultJiangSuProcurementClientCreator implements JiangSuProcuremen
         ArgumentValidate.notNull(config.getType(), "config type cannot be null");
 
         JiangSuProcurementAccessTokenClient accessTokenClient = JiangSuProcurementAccessTokenClient.create(config);
-        NanJingProcurementClientAccessTokenInterceptor interceptor = new NanJingProcurementClientAccessTokenInterceptor(accessTokenClient, accessTokenManager);
+        JiangSuProcurementClientAccessTokenInterceptor interceptor = new JiangSuProcurementClientAccessTokenInterceptor(accessTokenClient, accessTokenManager);
         log.info("creating his procurement client: {}", config);
 
         // 省采

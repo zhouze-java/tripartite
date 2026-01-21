@@ -2,13 +2,15 @@ package work.gaigeshen.jiangsu.openapi.parameters;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author zhouze
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-public class JiangSuProcurementAccessTokenParameters implements JiangSuProcurementParameters {
+public class JiangSuProcurementAccessTokenParameters extends JiangSuProcurementAbstractParameters {
 
     /**
      * 应用ID

@@ -12,7 +12,6 @@ import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementAccessTokenResp
 import work.gaigeshen.tripartite.core.interceptor.InterceptingException;
 import work.gaigeshen.tripartite.core.util.json.JsonUtils;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -20,13 +19,13 @@ import java.util.Objects;
  * @author gaigeshen
  */
 @Slf4j
-public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcurementClientRequestResponseInterceptor {
+public class JiangSuProcurementClientAccessTokenInterceptor extends JiangSuProcurementClientRequestResponseInterceptor {
 
     private final JiangSuProcurementBasicClient jiangSuProcurementBasicClient;
 
     private final JiangSuProcurementAccessTokenManager jiangSuProcurementAccessTokenManager;
 
-    public NanJingProcurementClientAccessTokenInterceptor(JiangSuProcurementBasicClient client,
+    public JiangSuProcurementClientAccessTokenInterceptor(JiangSuProcurementBasicClient client,
                                                           JiangSuProcurementAccessTokenManager accessTokenManager) {
         super(client.getJiangSuProcurementConfig());
         this.jiangSuProcurementBasicClient = client;

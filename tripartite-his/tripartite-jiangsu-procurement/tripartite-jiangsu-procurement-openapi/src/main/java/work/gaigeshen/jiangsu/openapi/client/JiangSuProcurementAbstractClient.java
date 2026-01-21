@@ -2,6 +2,7 @@ package work.gaigeshen.jiangsu.openapi.client;
 
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementClientException;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAbstractParameters;
 import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
 import work.gaigeshen.jiangsu.openapi.response.AbstractJiangSuProcurementResponse;
 import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementResponse;
@@ -33,7 +34,7 @@ public abstract class JiangSuProcurementAbstractClient implements JiangSuProcure
     }
 
     @Override
-    public <R extends JiangSuProcurementResponse> R execute(JiangSuProcurementParameters parameters, Class<R> responseClass, String uri) throws JiangSuProcurementClientException {
+    public <R extends JiangSuProcurementResponse> R execute(JiangSuProcurementAbstractParameters parameters, Class<R> responseClass, String uri) throws JiangSuProcurementClientException {
         ArgumentValidate.notNull(parameters, "parameters cannot be null");
         ArgumentValidate.notNull(responseClass, "responseClass cannot be null");
         ArgumentValidate.notNull(uri, "uri cannot be null");

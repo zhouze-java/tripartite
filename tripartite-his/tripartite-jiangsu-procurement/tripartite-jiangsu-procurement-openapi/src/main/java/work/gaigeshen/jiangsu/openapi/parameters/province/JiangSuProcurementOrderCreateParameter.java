@@ -1,6 +1,8 @@
 package work.gaigeshen.jiangsu.openapi.parameters.province;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAbstractParameters;
 import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
 
 /**
@@ -9,8 +11,9 @@ import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
  *
  * @author zhouze
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderCreateParameter implements JiangSuProcurementParameters {
+public class JiangSuProcurementOrderCreateParameter extends JiangSuProcurementAbstractParameters {
     /**
      * 医院订单类型
      * 0：正常订单

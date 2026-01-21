@@ -19,9 +19,9 @@ import java.util.Objects;
 /**
  * @author gaigeshen
  */
-public class NanJingProcurementClientRequestResponseInterceptor extends AbstractInterceptor {
+public class JiangSuProcurementClientRequestResponseInterceptor extends AbstractInterceptor {
 
-    private final Logger log = LoggerFactory.getLogger(NanJingProcurementClientRequestResponseInterceptor.class);
+    private final Logger log = LoggerFactory.getLogger(JiangSuProcurementClientRequestResponseInterceptor.class);
 
     private final JiangSuProcurementConfig jiangSuProcurementConfig;
 
@@ -29,7 +29,7 @@ public class NanJingProcurementClientRequestResponseInterceptor extends Abstract
         Security.addProvider(new BouncyCastleProvider());
     }
 
-    public NanJingProcurementClientRequestResponseInterceptor(JiangSuProcurementConfig hisProcurementConfig) {
+    public JiangSuProcurementClientRequestResponseInterceptor(JiangSuProcurementConfig hisProcurementConfig) {
         ArgumentValidate.notNull(hisProcurementConfig, "hisProcurementConfig cannot be null");
         this.jiangSuProcurementConfig = hisProcurementConfig;
     }

@@ -1,6 +1,7 @@
 package work.gaigeshen.jiangsu.openapi.parameters.province;
 
 import lombok.Data;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAbstractParameters;
 import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
 
 /**
@@ -11,7 +12,7 @@ import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
  * @author zhouze
  */
 @Data
-public class JiangSuProcurementOrderSubmitParameter implements JiangSuProcurementParameters {
+public class JiangSuProcurementOrderSubmitParameter extends JiangSuProcurementAbstractParameters {
 
     /**
      * 省平台订单编号

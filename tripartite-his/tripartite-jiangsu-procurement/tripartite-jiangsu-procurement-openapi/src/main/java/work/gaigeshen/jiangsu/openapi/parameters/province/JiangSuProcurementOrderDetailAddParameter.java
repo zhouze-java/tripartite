@@ -2,6 +2,9 @@ package work.gaigeshen.jiangsu.openapi.parameters.province;
 
 import lombok.Data;
 import java.util.List;
+
+import lombok.EqualsAndHashCode;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAbstractParameters;
 import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
 
 /**
@@ -10,8 +13,9 @@ import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
  *
  * @author zhouze
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderDetailAddParameter implements JiangSuProcurementParameters {
+public class JiangSuProcurementOrderDetailAddParameter extends JiangSuProcurementAbstractParameters {
 
     /**
      * 省平台订单编号

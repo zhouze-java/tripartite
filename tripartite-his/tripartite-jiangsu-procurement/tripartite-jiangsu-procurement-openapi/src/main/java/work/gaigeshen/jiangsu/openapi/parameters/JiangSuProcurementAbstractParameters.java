@@ -4,8 +4,12 @@ import work.gaigeshen.tripartite.core.parameter.converter.JsonParametersConverte
 import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
 
 /**
- * @author gaigeshen
+ * @author zhouze
  */
+@Parameters(
+        converter = JsonParametersConverter.class,
+        customizer = JiangSuProcurementParametersCustomizer.class
+)
+public abstract class JiangSuProcurementAbstractParameters {
 
-public interface JiangSuProcurementParameters {
 }
