@@ -1,5 +1,7 @@
 package work.gaigeshen.jiangsu.openapi.parameters;
 
+import lombok.Getter;
+import lombok.Setter;
 import work.gaigeshen.tripartite.core.parameter.converter.JsonParametersConverter;
 import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
 
@@ -10,6 +12,8 @@ import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
         converter = JsonParametersConverter.class,
         customizer = JiangSuProcurementParametersCustomizer.class
 )
-public abstract class JiangSuProcurementAbstractParameters {
+@Getter
+@Setter
+public class DefaultJiangSuProcurementAbstractParameters {
 
 }

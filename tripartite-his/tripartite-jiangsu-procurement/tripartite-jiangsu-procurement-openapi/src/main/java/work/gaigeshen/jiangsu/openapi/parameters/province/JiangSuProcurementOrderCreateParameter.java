@@ -2,8 +2,7 @@ package work.gaigeshen.jiangsu.openapi.parameters.province;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAbstractParameters;
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
 
 /**
  * 耗材新建采购订单入参（H005）
@@ -13,7 +12,7 @@ import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderCreateParameter extends JiangSuProcurementAbstractParameters {
+public class JiangSuProcurementOrderCreateParameter extends DefaultJiangSuProcurementAbstractParameters {
     /**
      * 医院订单类型
      * 0：正常订单

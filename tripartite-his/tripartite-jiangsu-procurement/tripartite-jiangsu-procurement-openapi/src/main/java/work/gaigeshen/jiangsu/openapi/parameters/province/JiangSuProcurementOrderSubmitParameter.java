@@ -1,8 +1,8 @@
 package work.gaigeshen.jiangsu.openapi.parameters.province;
 
 import lombok.Data;
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAbstractParameters;
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
+import lombok.EqualsAndHashCode;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
 
 /**
  * 耗材提交采购订单入参（H007）
@@ -11,8 +11,9 @@ import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
  *
  * @author zhouze
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderSubmitParameter extends JiangSuProcurementAbstractParameters {
+public class JiangSuProcurementOrderSubmitParameter extends DefaultJiangSuProcurementAbstractParameters {
 
     /**
      * 省平台订单编号

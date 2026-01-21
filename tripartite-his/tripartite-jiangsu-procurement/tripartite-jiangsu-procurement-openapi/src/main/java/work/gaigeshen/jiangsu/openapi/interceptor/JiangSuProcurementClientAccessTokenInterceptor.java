@@ -7,7 +7,7 @@ import work.gaigeshen.jiangsu.openapi.accesstoken.JiangSuProcurementAccessTokenM
 import work.gaigeshen.jiangsu.openapi.client.JiangSuProcurementBasicClient;
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAccessTokenParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAccessTokenParameters;
 import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementAccessTokenResponse;
 import work.gaigeshen.tripartite.core.interceptor.InterceptingException;
 import work.gaigeshen.tripartite.core.util.json.JsonUtils;
@@ -45,7 +45,7 @@ public class JiangSuProcurementClientAccessTokenInterceptor extends JiangSuProcu
         if (Objects.nonNull(accessToken) && !JiangSuProcurementAccessTokenHelper.isExpired(accessToken)) {
             setRequestToken(bodyMap, accessToken);
         } else {
-            JiangSuProcurementAccessTokenParameters inputData = new JiangSuProcurementAccessTokenParameters(config.getAppCode(), config.getAuthCode());
+            DefaultJiangSuProcurementAccessTokenParameters inputData = new DefaultJiangSuProcurementAccessTokenParameters(config.getAppCode(), config.getAuthCode());
             JiangSuProcurementAccessTokenResponse response;
             try {
                 response = jiangSuProcurementBasicClient.execute(inputData, JiangSuProcurementAccessTokenResponse.class, config.getAccessTokenUri());

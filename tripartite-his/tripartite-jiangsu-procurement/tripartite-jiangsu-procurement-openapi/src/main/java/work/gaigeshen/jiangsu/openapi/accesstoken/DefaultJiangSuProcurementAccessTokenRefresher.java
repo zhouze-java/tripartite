@@ -3,7 +3,7 @@ package work.gaigeshen.jiangsu.openapi.accesstoken;
 import work.gaigeshen.jiangsu.openapi.client.JiangSuProcurementBasicClient;
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementAccessTokenRefreshException;
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAccessTokenParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAccessTokenParameters;
 import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementAccessTokenResponse;
 import work.gaigeshen.tripartite.core.util.ArgumentValidate;
 
@@ -30,7 +30,7 @@ public class DefaultJiangSuProcurementAccessTokenRefresher implements JiangSuPro
         }
 
 
-        JiangSuProcurementAccessTokenParameters inputData = new JiangSuProcurementAccessTokenParameters(
+        DefaultJiangSuProcurementAccessTokenParameters inputData = new DefaultJiangSuProcurementAccessTokenParameters(
                 config.getAppCode(), config.getAuthCode());
         JiangSuProcurementAccessTokenResponse response;
         try {

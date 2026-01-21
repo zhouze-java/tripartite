@@ -4,8 +4,7 @@ import lombok.Data;
 import java.util.List;
 
 import lombok.EqualsAndHashCode;
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAbstractParameters;
-import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
 
 /**
  * 耗材添加采购订单明细入参（H006）
@@ -15,7 +14,7 @@ import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParameters;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderDetailAddParameter extends JiangSuProcurementAbstractParameters {
+public class JiangSuProcurementOrderDetailAddParameter extends DefaultJiangSuProcurementAbstractParameters {
 
     /**
      * 省平台订单编号
