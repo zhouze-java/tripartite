@@ -1,0 +1,69 @@
+package work.gaigeshen.jiangsu.openapi.interceptor;
+
+import lombok.extern.slf4j.Slf4j;
+import work.gaigeshen.jiangsu.openapi.accesstoken.JiangSuProcurementAccessToken;
+import work.gaigeshen.jiangsu.openapi.accesstoken.JiangSuProcurementAccessTokenHelper;
+import work.gaigeshen.jiangsu.openapi.accesstoken.JiangSuProcurementAccessTokenManager;
+import work.gaigeshen.jiangsu.openapi.client.JiangSuProcurementBasicClient;
+import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
+
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementAccessTokenParameters;
+import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementAccessTokenResponse;
+import work.gaigeshen.tripartite.core.interceptor.InterceptingException;
+import work.gaigeshen.tripartite.core.util.json.JsonUtils;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * @author gaigeshen
+ */
+@Slf4j
+public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcurementClientRequestResponseInterceptor {
+
+    private final JiangSuProcurementBasicClient jiangSuProcurementBasicClient;
+
+    private final JiangSuProcurementAccessTokenManager jiangSuProcurementAccessTokenManager;
+
+    public NanJingProcurementClientAccessTokenInterceptor(JiangSuProcurementBasicClient client,
+                                                          JiangSuProcurementAccessTokenManager accessTokenManager) {
+        super(client.getJiangSuProcurementConfig());
+        this.jiangSuProcurementBasicClient = client;
+        this.jiangSuProcurementAccessTokenManager = accessTokenManager;
+    }
+
+    @Override
+    protected void updateRequest(Request request) throws InterceptingException {
+        super.updateRequest(request);
+
+        String bodyContent = new String(request.bodyBytes(), StandardCharsets.UTF_8);
+        Map<String, Object> bodyMap = JsonUtils.decodeObject(bodyContent);
+
+        JiangSuProcurementConfig config = jiangSuProcurementBasicClient.getJiangSuProcurementConfig();
+        JiangSuProcurementAccessToken accessToken = jiangSuProcurementAccessTokenManager.findAccessToken(config);
+
+        if (Objects.nonNull(accessToken) && !JiangSuProcurementAccessTokenHelper.isExpired(accessToken)) {
+            setRequestToken(bodyMap, accessToken);
+        } else {
+            JiangSuProcurementAccessTokenParameters inputData = new JiangSuProcurementAccessTokenParameters(config.getAppCode(), config.getAuthCode());
+            JiangSuProcurementAccessTokenResponse response;
+            try {
+                response = jiangSuProcurementBasicClient.execute(inputData, JiangSuProcurementAccessTokenResponse.class, config.getAccessTokenUri());
+            } catch (Exception e) {
+                throw new InterceptingException("could not get new access token", e);
+            }
+            JiangSuProcurementAccessToken newAccessToken = JiangSuProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken());
+            jiangSuProcurementAccessTokenManager.addNewAccessToken(config, newAccessToken);
+
+            setRequestToken(bodyMap, newAccessToken);
+        }
+
+        String encode = JsonUtils.encode(bodyMap);
+        request.body(encode.getBytes(StandardCharsets.UTF_8));
+    }
+
+    private static void setRequestToken(Map<String, Object> bodyMap, JiangSuProcurementAccessToken newAccessToken) {
+        bodyMap.put("accessToken", newAccessToken.getAccessToken());
+    }
+}

@@ -5,16 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>work.gaigeshen</groupId>
-        <artifactId>tripartite-his</artifactId>
+        <artifactId>tripartite</artifactId>
         <version>1.24.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>tripartite-nanjing-procurement</artifactId>
+    <artifactId>tripartite-jiangsu-procurement</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>tripartite-nanjing-procurement-openapi</module>
-        <module>tripartite-nanjing-procurement-autoconfigure</module>
-        <module>tripartite-nanjing-procurement-spring-boot-starter</module>
+        <module>tripartite-jiangsu-procurement-openapi</module>
+        <module>tripartite-jiangsu-procurement-spring-boot-starter</module>
+        <module>tripartite-jiangsu-procurement-autoconfigure</module>
     </modules>
 
     <properties>

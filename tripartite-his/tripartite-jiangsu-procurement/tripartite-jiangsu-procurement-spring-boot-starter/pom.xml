@@ -5,12 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>work.gaigeshen</groupId>
-        <artifactId>tripartite-nanjing-procurement</artifactId>
+        <artifactId>tripartite-jiangsu-procurement</artifactId>
         <version>1.24.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>tripartite-nanjing-procurement-spring-boot-starter</artifactId>
+    <artifactId>tripartite-jiangsu-procurement-spring-boot-starter</artifactId>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
 
@@ -21,17 +26,16 @@
 
         <dependency>
             <groupId>work.gaigeshen</groupId>
-            <artifactId>tripartite-nanjing-procurement-autoconfigure</artifactId>
+            <artifactId>tripartite-jiangsu-procurement-autoconfigure</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>work.gaigeshen</groupId>
-            <artifactId>tripartite-nanjing-procurement-openapi</artifactId>
+            <artifactId>tripartite-jiangsu-procurement-openapi</artifactId>
             <version>${project.version}</version>
         </dependency>
 
 
     </dependencies>
-
 </project>
