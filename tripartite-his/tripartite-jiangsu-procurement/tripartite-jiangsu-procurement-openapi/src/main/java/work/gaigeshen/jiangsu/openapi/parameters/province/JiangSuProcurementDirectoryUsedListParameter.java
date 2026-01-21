@@ -12,12 +12,6 @@ import java.util.List;
 public class JiangSuProcurementDirectoryUsedListParameter implements JiangSuProcurementParameters {
 
     /**
-     * 接口访问令牌
-     * 通过 H002 接口获取
-     */
-    private String accessToken;
-
-    /**
      * 当前页码
      * 必填，从 1 开始
      */
