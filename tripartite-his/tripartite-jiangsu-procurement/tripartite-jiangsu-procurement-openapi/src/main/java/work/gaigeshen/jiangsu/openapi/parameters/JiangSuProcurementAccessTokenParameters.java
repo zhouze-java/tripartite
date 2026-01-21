@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * @author zhouze
- * @date 2026/1/20 14:08
- * @description 江苏省采获取token
  */
 @Data
 @AllArgsConstructor

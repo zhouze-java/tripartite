@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * @author zhouze
- * @date 2026/1/20 15:01
- * @description TODO
  */
 @Data
 public class JiangSuProcurementDirectoryUsedListParameter implements JiangSuProcurementParameters {

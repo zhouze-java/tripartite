@@ -12,6 +12,7 @@
     <modules>
         <module>tripartite-his-procurement</module>
         <module>tripartite-nanjing-procurement</module>
+        <module>tripartite-jiangsu-procurement</module>
     </modules>
     <artifactId>tripartite-his</artifactId>
 
