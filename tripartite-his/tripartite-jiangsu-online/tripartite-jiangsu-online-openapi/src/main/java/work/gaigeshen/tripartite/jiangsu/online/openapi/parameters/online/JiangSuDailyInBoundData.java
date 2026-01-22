@@ -110,20 +110,5 @@ public class JiangSuDailyInBoundData implements JiangSuOnlineInputData {
          * 省平台采购订单明细ID
          */
         private String prov_plaf_purc_ord_det_id;
-
-        /**
-         * 南京平台产品代码
-         */
-        private String nj_plaf_prod_code;
-
-        /**
-         * 南京平台产品ID
-         */
-        private String nj_plaf_prod_id;
-
-        /**
-         * 南京平台采购订单明细ID
-         */
-        private String nj_plaf_purc_ord_det_id;
     }
 }

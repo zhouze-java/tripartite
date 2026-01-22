@@ -100,15 +100,5 @@ public class JiangSuDailyRefundData implements JiangSuOnlineInputData {
          * 省市平台退货明细 ID
          */
         private String prov_plaf_retn_det_id;
-
-        /**
-         * 南京平台产品代码
-         */
-        private String nj_plaf_prod_code;
-
-        /**
-         * 南京平台采购订单明细ID
-         */
-        private String nj_plaf_retn_det_id;
     }
 }
