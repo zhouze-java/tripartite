@@ -1,4 +1,4 @@
-package work.gaigeshen.tripartite.nanjing.procurement.spring.boot.autoconfigure;
+package work.gaigeshen.tripartite.jiangsu.online.spring.boot.autoconfigure;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

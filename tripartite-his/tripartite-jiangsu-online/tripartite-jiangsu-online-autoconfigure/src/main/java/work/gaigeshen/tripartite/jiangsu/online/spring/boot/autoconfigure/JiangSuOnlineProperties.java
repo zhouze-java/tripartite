@@ -1,4 +1,4 @@
-package work.gaigeshen.tripartite.nanjing.procurement.spring.boot.autoconfigure;
+package work.gaigeshen.tripartite.jiangsu.online.spring.boot.autoconfigure;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @ConfigurationProperties("nanjing.procurement")
 @Data
-public class NanJingProcurementProperties {
+public class JiangSuOnlineProperties {
 
     private List<Client> clients = new ArrayList<>();
 
