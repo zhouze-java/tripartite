@@ -10,6 +10,8 @@ import work.gaigeshen.tripartite.core.util.ArgumentValidate;
 import work.gaigeshen.tripartite.core.util.json.JsonUtils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.security.Security;
 import java.util.HashMap;
@@ -41,6 +43,16 @@ public class JiangSuProcurementClientRequestResponseInterceptor extends Abstract
         log.info("REQUEST METHOD: {}", request.method());
         log.info("REQUEST HEADERS: {}", request.headers());
         log.info("REQUEST BODY: {}", new String(request.bodyBytes(), StandardCharsets.UTF_8));
+
+        String bodyContent = new String(request.bodyBytes(), StandardCharsets.UTF_8);
+        String decode = "";
+        try {
+            decode= URLDecoder.decode(bodyContent.replaceFirst("params=", ""), "utf-8");
+            log.info("REQUEST BODY: {}", decode);
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

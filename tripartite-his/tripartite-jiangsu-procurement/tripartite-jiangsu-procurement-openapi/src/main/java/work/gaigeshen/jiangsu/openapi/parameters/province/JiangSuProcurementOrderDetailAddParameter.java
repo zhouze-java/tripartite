@@ -16,8 +16,9 @@ import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
  *
  * @author zhouze
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderDetailAddParameter implements JiangSuProcurementParams {
+public class JiangSuProcurementOrderDetailAddParameter extends DefaultJiangSuProcurementParameters {
 
     /**
      * 省平台订单编号

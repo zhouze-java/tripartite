@@ -14,8 +14,9 @@ import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
  *
  * @author zhouze
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderCreateParameter implements JiangSuProcurementParams {
+public class JiangSuProcurementOrderCreateParameter extends DefaultJiangSuProcurementParameters {
     /**
      * 医院订单类型
      * 0：正常订单
