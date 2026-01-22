@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  work.gaigeshen.tripartite.jiangsu.online.spring.boot.autoconfigure.JiangSuOnlineAutoConfiguration
+  work.gaigeshen.tripartite.nanjing.procurement.spring.boot.autoconfigure.NanJingProcurementAutoConfiguration
