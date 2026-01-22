@@ -7,6 +7,7 @@ import work.gaigeshen.tripartite.core.RestTemplateUtils;
 import work.gaigeshen.tripartite.core.RestTemplateWebExecutor;
 import work.gaigeshen.tripartite.core.WebExecutor;
 import work.gaigeshen.tripartite.core.parameter.converter.ParametersMetadataParametersConverter;
+import work.gaigeshen.tripartite.core.parameter.converter.RawFormJsonParametersConverter;
 
 /**
  * @author gaigeshen
@@ -22,7 +23,7 @@ class JiangSuProcurementAccessTokenClient extends JiangSuProcurementAbstractClie
         RestTemplateUtils.configureTimeout(restTemplate, config.getConnectTimeout(), config.getReadTimeout());
         RestTemplateWebExecutor executor = RestTemplateWebExecutor.create(restTemplate);
         executor.setInterceptors(new JiangSuProcurementClientRequestResponseInterceptor(config));
-        executor.setParametersConverter(new ParametersMetadataParametersConverter(config));
+        executor.setParametersConverter(new RawFormJsonParametersConverter());
         return new JiangSuProcurementAccessTokenClient(config, executor);
     }
 

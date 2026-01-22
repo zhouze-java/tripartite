@@ -2,12 +2,13 @@ package work.gaigeshen.jiangsu.openapi.client;
 
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementClientException;
-import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementParameters;
 import work.gaigeshen.jiangsu.openapi.response.AbstractJiangSuProcurementResponse;
 import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementResponse;
 import work.gaigeshen.tripartite.core.WebException;
 import work.gaigeshen.tripartite.core.WebExecutor;
 import work.gaigeshen.tripartite.core.util.ArgumentValidate;
+import work.gaigeshen.tripartite.core.util.json.JsonUtils;
 
 import java.util.Objects;
 
@@ -33,12 +34,13 @@ public abstract class JiangSuProcurementAbstractClient implements JiangSuProcure
     }
 
     @Override
-    public <R extends JiangSuProcurementResponse> R execute(DefaultJiangSuProcurementAbstractParameters parameters, Class<R> responseClass, String uri) throws JiangSuProcurementClientException {
+    public <R extends JiangSuProcurementResponse> R execute(DefaultJiangSuProcurementParameters parameters, Class<R> responseClass, String uri) throws JiangSuProcurementClientException {
         ArgumentValidate.notNull(parameters, "parameters cannot be null");
         ArgumentValidate.notNull(responseClass, "responseClass cannot be null");
         ArgumentValidate.notNull(uri, "uri cannot be null");
         try {
-            R response = executor.execute(config.getServerHost() + uri, parameters, responseClass);
+
+            R response = executor.execute(config.getServerHost() + uri,  parameters, responseClass);
             return validateResponse(response);
         } catch (WebException e) {
             throw new JiangSuProcurementClientException(e.getMessage(), e);

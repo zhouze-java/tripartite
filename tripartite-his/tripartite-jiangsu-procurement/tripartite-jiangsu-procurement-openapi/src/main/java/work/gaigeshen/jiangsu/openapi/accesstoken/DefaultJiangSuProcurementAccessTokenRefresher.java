@@ -4,6 +4,7 @@ import work.gaigeshen.jiangsu.openapi.client.JiangSuProcurementBasicClient;
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementAccessTokenRefreshException;
 import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAccessTokenParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementParameters;
 import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementAccessTokenResponse;
 import work.gaigeshen.tripartite.core.util.ArgumentValidate;
 

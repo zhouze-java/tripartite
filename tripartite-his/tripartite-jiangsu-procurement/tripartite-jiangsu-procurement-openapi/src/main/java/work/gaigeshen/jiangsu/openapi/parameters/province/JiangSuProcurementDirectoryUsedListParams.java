@@ -2,7 +2,7 @@ package work.gaigeshen.jiangsu.openapi.parameters.province;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementParameters;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementDirectoryUsedListParameter extends DefaultJiangSuProcurementAbstractParameters {
+public class JiangSuProcurementDirectoryUsedListParams extends DefaultJiangSuProcurementParameters {
 
     /**
      * 当前页码

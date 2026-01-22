@@ -4,7 +4,11 @@ import lombok.Data;
 import java.util.List;
 
 import lombok.EqualsAndHashCode;
-import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParametersCustomizer;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParams;
+import work.gaigeshen.tripartite.core.parameter.converter.JsonParametersConverter;
+import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
 
 /**
  * 耗材添加采购订单明细入参（H006）
@@ -12,9 +16,8 @@ import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstra
  *
  * @author zhouze
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderDetailAddParameter extends DefaultJiangSuProcurementAbstractParameters {
+public class JiangSuProcurementOrderDetailAddParameter implements JiangSuProcurementParams {
 
     /**
      * 省平台订单编号

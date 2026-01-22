@@ -1,8 +1,11 @@
 package work.gaigeshen.jiangsu.openapi.parameters;
 
 /**
+ *
  * @author gaigeshen
  */
+public interface JiangSuProcurementParams {
 
-public interface JiangSuProcurementParameters {
+
+
 }

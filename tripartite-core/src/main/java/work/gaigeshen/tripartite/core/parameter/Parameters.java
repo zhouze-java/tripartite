@@ -98,7 +98,7 @@ public interface Parameters extends Iterable<Parameter<?>> {
      * @author gaigeshen
      */
     enum Type {
-        JSON, PARAMETERS, MULTIPART_PARAMETERS, INTERNAL
+        JSON, PARAMETERS, MULTIPART_PARAMETERS, INTERNAL, RAW_FORM_JSON,
     }
 
 }

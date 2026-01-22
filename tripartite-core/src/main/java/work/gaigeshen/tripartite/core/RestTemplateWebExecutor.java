@@ -320,6 +320,13 @@ public class RestTemplateWebExecutor implements WebExecutor {
         if (parameters.getType() == Parameters.Type.JSON) {
             hHeaders.setContentType(APPLICATION_JSON);
             return new HttpEntityRequestCallback(messageConverters, new HttpEntity<>(extractParameters(parameters), hHeaders));
+        } else if (parameters.getType() == Parameters.Type.RAW_FORM_JSON) {
+            hHeaders.setContentType(APPLICATION_FORM_URLENCODED);
+            MultiValueMap<String, String> form = new LinkedMultiValueMap<>();
+            for (Parameter<?> parameter : parameters) {
+                form.add(parameter.getName(), String.valueOf(parameter.getValue()));
+            }
+            return new HttpEntityRequestCallback(messageConverters, new HttpEntity<>(form, hHeaders));
         } else {
             if (parameters.getType() == Parameters.Type.PARAMETERS) {
                 hHeaders.setContentType(APPLICATION_FORM_URLENCODED);

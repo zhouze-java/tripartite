@@ -54,27 +54,19 @@ public class JiangSuProcurementClientRequestResponseInterceptor extends Abstract
             throw new InterceptingException("could not read raw response", e);
         }
         Map<String, Object> decodedResponse = JsonUtils.decodeObject(rawResponse);
-        String infcode = (String) decodedResponse.get("infcode");
-        if (!Objects.equals("0", infcode)) {
-            throw new InterceptingException(rawResponse);
-        }
-        Map<?, ?> output = (Map<?, ?>) decodedResponse.get("output");
-        if (Objects.isNull(output) || !output.containsKey("data")) {
-            throw new InterceptingException("response output or output data not found: " + rawResponse);
-        }
-        Map<?, ?> dataRaw = (Map<?, ?>) output.get("data");
-        Map<String, Object> data = new HashMap<>();
-        for (Map.Entry<?, ?> entry : dataRaw.entrySet()) {
-            if (entry.getKey() instanceof String) {
-                data.put((String) entry.getKey(), entry.getValue());
-            }
-        }
 
         // 处理令牌没有过期的情况
-        if ("9".equals(String.valueOf(data.get("return_code")))) {
-            data.put("return_code", "1");
+        if ("9".equals(String.valueOf(decodedResponse.get("returnCode")))) {
+            decodedResponse.put("returnCode", "1");
         }
 
-        response.changeBody(JsonUtils.encode(data));
+        String returnCode = String.valueOf(decodedResponse.get("returnCode"));
+        String returnMsg = String.valueOf(decodedResponse.get("returnMsg"));
+        if (!Objects.equals(returnCode, "1")) {
+            throw new InterceptingException("省平台返回信息异常: " + returnMsg);
+        }
+
+
+        response.changeBody(JsonUtils.encode(decodedResponse));
     }
 }

@@ -53,4 +53,9 @@ public interface ParametersConverter {
     static Parameters convertMultipartParameters(Object parameters, Parameter<?>... otherParameters) throws ParametersConversionException {
         return MultipartParametersParametersConverter.INSTANCE.convert(parameters).put(otherParameters);
     }
+
+    static Parameters convertRawFormJson(Object parameters, Parameter<?>... otherParameters)
+            throws ParametersConversionException {
+        return RawFormJsonParametersConverter.INSTANCE.convert(parameters).put(otherParameters);
+    }
 }

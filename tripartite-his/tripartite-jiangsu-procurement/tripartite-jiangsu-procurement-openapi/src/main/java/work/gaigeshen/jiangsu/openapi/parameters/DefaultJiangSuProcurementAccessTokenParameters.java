@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-public class DefaultJiangSuProcurementAccessTokenParameters extends DefaultJiangSuProcurementAbstractParameters {
+public class DefaultJiangSuProcurementAccessTokenParameters extends DefaultJiangSuProcurementParameters {
 
     /**
      * 应用ID

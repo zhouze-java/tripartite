@@ -2,7 +2,11 @@ package work.gaigeshen.jiangsu.openapi.parameters.province;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParametersCustomizer;
+import work.gaigeshen.jiangsu.openapi.parameters.JiangSuProcurementParams;
+import work.gaigeshen.tripartite.core.parameter.converter.JsonParametersConverter;
+import work.gaigeshen.tripartite.core.parameter.converter.Parameters;
 
 /**
  * 耗材提交采购订单入参（H007）
@@ -11,9 +15,8 @@ import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstra
  *
  * @author zhouze
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class JiangSuProcurementOrderSubmitParameter extends DefaultJiangSuProcurementAbstractParameters {
+public class JiangSuProcurementOrderSubmitParameter implements JiangSuProcurementParams {
 
     /**
      * 省平台订单编号
@@ -32,4 +35,5 @@ public class JiangSuProcurementOrderSubmitParameter extends DefaultJiangSuProcur
      * 非必填，老系统冗余字段
      */
     private String departmentID;
+
 }

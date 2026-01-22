@@ -8,9 +8,13 @@ import work.gaigeshen.jiangsu.openapi.client.JiangSuProcurementBasicClient;
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 
 import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAccessTokenParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementParameters;
 import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementAccessTokenResponse;
 import work.gaigeshen.tripartite.core.interceptor.InterceptingException;
 import work.gaigeshen.tripartite.core.util.json.JsonUtils;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
@@ -37,7 +41,14 @@ public class JiangSuProcurementClientAccessTokenInterceptor extends JiangSuProcu
         super.updateRequest(request);
 
         String bodyContent = new String(request.bodyBytes(), StandardCharsets.UTF_8);
-        Map<String, Object> bodyMap = JsonUtils.decodeObject(bodyContent);
+        String decode = "";
+        try {
+           decode= URLDecoder.decode(bodyContent.replaceFirst("params=", ""), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+
+        Map<String, Object> bodyMap = JsonUtils.decodeObject(decode);
 
         JiangSuProcurementConfig config = jiangSuProcurementBasicClient.getJiangSuProcurementConfig();
         JiangSuProcurementAccessToken accessToken = jiangSuProcurementAccessTokenManager.findAccessToken(config);
@@ -59,7 +70,8 @@ public class JiangSuProcurementClientAccessTokenInterceptor extends JiangSuProcu
         }
 
         String encode = JsonUtils.encode(bodyMap);
-        request.body(encode.getBytes(StandardCharsets.UTF_8));
+        String encodeBody = "params=" + encode;
+        request.body(encodeBody.getBytes(StandardCharsets.UTF_8));
     }
 
     private static void setRequestToken(Map<String, Object> bodyMap, JiangSuProcurementAccessToken newAccessToken) {

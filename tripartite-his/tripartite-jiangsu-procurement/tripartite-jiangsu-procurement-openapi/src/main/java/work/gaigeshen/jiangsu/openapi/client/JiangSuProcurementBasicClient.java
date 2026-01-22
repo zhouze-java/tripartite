@@ -3,7 +3,7 @@ package work.gaigeshen.jiangsu.openapi.client;
 
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementClientException;
-import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementAbstractParameters;
+import work.gaigeshen.jiangsu.openapi.parameters.DefaultJiangSuProcurementParameters;
 import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementResponse;
 
 /**
@@ -12,6 +12,7 @@ import work.gaigeshen.jiangsu.openapi.response.JiangSuProcurementResponse;
  * @author gaigeshen
  */
 public interface JiangSuProcurementBasicClient {
+
 
     /**
      * 返回此客户端的配置
@@ -44,7 +45,7 @@ public interface JiangSuProcurementBasicClient {
      * @return 响应结果不会为空
      * @throws JiangSuProcurementClientException 执行请求或者执行业务发生异常
      */
-    <R extends JiangSuProcurementResponse> R execute(DefaultJiangSuProcurementAbstractParameters parameters, Class<R> responseClass, String uri)
+    <R extends JiangSuProcurementResponse> R execute(DefaultJiangSuProcurementParameters parameters, Class<R> responseClass, String uri)
             throws JiangSuProcurementClientException;
 
 }

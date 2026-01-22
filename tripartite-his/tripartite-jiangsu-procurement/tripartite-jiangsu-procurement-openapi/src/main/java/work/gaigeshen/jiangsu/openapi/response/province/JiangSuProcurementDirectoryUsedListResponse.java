@@ -156,12 +156,12 @@ public class JiangSuProcurementDirectoryUsedListResponse extends AbstractJiangSu
         /**
          * 添加时间
          */
-        private Date addTime;
+        private String addTime;
 
         /**
          * 最后更新时间
          */
-        private Date lastUpDateTime;
+        private String lastUpDateTime;
 
     }
 }
