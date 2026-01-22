@@ -165,11 +165,11 @@ public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
         this.fixmedinsCode = jiangSuOnlineConfig.getHospitalCode();
         this.fixmedinsName = jiangSuOnlineConfig.getHospitalName();
         this.msgId = MsgIdGenerator.generate(getFixmedinsCode());
-        this.mdtrtareaAdmvs = "320100";
-        this.insuplcAdmdvs = "320100";
+        this.mdtrtareaAdmvs = "320600";
+        this.insuplcAdmdvs = "320600";
         this.recerSysCode = "SPD";
 
-        this.cainfo = "04a6776be9196b4bc6fb67e3834b3ad0469859bd77ce457c188724cba619cf4d69ff2db1dee8acde86f963775445ab349191729b93e4ddf4b134eadca57052cf07b796d188817ea3b0ee559fea30fc39fd288cfd74ae7711a7e9a6c961dae4f206b52b5488fa33dc79cbd2485724506f75c4dbe956993c25ebf6a49a5867f22c47";
+        this.cainfo = "04fc0b1e766fa33443454a29b17350352d3ce91ac5788c293cdcee1b70639ccc9f9d9786bafa6d36a56e188eb4e07ee3c0af235b3b521ee7f9f4e496425155f770900e284bc887d6a7a54ec6997857a42b28c441ef18b5f45a2f401686579ebadf84fc2cb633b1e99f58fc502b745f3aa790cd2d9545f8165e3dc272ebecc8eae2";
 
         this.infver = "V1.0";
         this.opterType = "1";
