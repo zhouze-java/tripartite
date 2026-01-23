@@ -40,9 +40,5 @@ public class HisProcurementProperties {
         private String authCode;
 
         private String secret;
-
-        private String apiAccessKey;
-
-        private String secretKey;
     }
 }

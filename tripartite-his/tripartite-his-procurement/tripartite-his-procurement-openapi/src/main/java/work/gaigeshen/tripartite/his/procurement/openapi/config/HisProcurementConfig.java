@@ -35,10 +35,6 @@ public class HisProcurementConfig implements Config {
 
     private final String secret;
 
-    private final String apiAccessKey;
-
-    private final String secretKey;
-
     private HisProcurementConfig(Builder builder) {
         this.connectTimeout = builder.connectTimeout;
         this.readTimeout = builder.readTimeout;
@@ -50,8 +46,6 @@ public class HisProcurementConfig implements Config {
         this.appCode = builder.appCode;
         this.authCode = builder.authCode;
         this.secret = builder.secret;
-        this.apiAccessKey = builder.apiAccessKey;
-        this.secretKey = builder.secretKey;
     }
 
     public static Builder builder() {
@@ -105,10 +99,6 @@ public class HisProcurementConfig implements Config {
 
         private String secret;
 
-        private String apiAccessKey;
-
-        private String secretKey;
-
         public Builder setConnectTimeout(Integer connectTimeout) {
             this.connectTimeout = connectTimeout;
             return this;
@@ -156,16 +146,6 @@ public class HisProcurementConfig implements Config {
 
         public Builder setSecret(String secret) {
             this.secret = secret;
-            return this;
-        }
-
-        public Builder setApiAccessKey(String apiAccessKey) {
-            this.apiAccessKey = apiAccessKey;
-            return this;
-        }
-
-        public Builder setSecretKey(String secretKey) {
-            this.secretKey = secretKey;
             return this;
         }
 
