@@ -47,6 +47,8 @@ public class JiangSuOnlineAutoConfiguration {
                     .authCode(client.getAuthCode())
                     .hospitalName(client.getHospitalName())
                     .hospitalCode(client.getHospitalCode())
+                    .apiAccessKey(client.getApiAccessKey())
+                    .secretKey(client.getSecretKey())
                     .build();
             JiangSuOnlineBasicClient procurementClient = hisProcurementClientCreator.create(config);
             hisProcurementClients.add(procurementClient);

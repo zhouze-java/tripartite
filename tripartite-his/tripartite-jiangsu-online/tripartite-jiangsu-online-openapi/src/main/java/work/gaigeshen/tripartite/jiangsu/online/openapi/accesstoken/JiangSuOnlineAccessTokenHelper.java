@@ -29,7 +29,7 @@ public class JiangSuOnlineAccessTokenHelper {
         if (isExpired(accessToken)) {
             return 0;
         }
-        return accessToken.getExpiresTimestamp() - System.currentTimeMillis() / 1000;
+        return accessToken.getExpiresTimestamp1() - System.currentTimeMillis() / 1000;
     }
 
     /**
@@ -46,8 +46,8 @@ public class JiangSuOnlineAccessTokenHelper {
         builder.accessToken(newAccessToken);
         builder.account(config.getAccount());
         builder.type(config.getType());
-        builder.expiresIn(DEFAULT_EXPIRES_IN_SECONDS);
-        builder.expiresTimestamp(System.currentTimeMillis() / 1000 + DEFAULT_EXPIRES_IN_SECONDS);
+        builder.expireTime(DEFAULT_EXPIRES_IN_SECONDS);
+        builder.expiresTimestamp1(System.currentTimeMillis() / 1000 + DEFAULT_EXPIRES_IN_SECONDS);
         builder.updateTime(new Date());
         return builder.build();
     }
@@ -60,7 +60,7 @@ public class JiangSuOnlineAccessTokenHelper {
      */
     public static boolean isExpired(JiangSuOnlineAccessToken accessToken) {
         ArgumentValidate.notNull(accessToken, "accessToken cannot be null");
-        return accessToken.getExpiresTimestamp() <= System.currentTimeMillis() / 1000;
+        return accessToken.getExpiresTimestamp1() <= System.currentTimeMillis() / 1000;
     }
 
     /**

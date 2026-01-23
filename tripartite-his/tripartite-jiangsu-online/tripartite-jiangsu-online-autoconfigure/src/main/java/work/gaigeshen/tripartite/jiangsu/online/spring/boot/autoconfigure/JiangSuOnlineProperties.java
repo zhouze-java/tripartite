@@ -44,5 +44,9 @@ public class JiangSuOnlineProperties {
         private String hospitalName;
 
         private String hospitalCode;
+
+        private String apiAccessKey;
+
+        private String secretKey;
     }
 }

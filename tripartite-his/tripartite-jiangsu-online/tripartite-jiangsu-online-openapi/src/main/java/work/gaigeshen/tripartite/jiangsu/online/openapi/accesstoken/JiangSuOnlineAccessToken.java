@@ -32,6 +32,16 @@ public class JiangSuOnlineAccessToken {
     private final long expiresTimestamp;
 
     /**
+     * 有效期时长单位秒
+     */
+    private final long expireTime;
+
+    /**
+     * 过期时间点单位秒
+     */
+    private final long expiresTimestamp1;
+
+    /**
      * 更新时间
      */
     private final Date updateTime;

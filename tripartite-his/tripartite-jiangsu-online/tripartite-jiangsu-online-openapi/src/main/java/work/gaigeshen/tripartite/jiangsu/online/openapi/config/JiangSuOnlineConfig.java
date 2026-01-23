@@ -65,4 +65,8 @@ public class JiangSuOnlineConfig {
      * 两定的医药机构名称
      */
     private final String hospitalName;
+
+    private final String apiAccessKey;
+
+    private final String secretKey;
 }
