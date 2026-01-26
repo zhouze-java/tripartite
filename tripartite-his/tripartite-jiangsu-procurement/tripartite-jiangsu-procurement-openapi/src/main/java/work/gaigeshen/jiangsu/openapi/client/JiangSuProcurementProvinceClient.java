@@ -102,9 +102,7 @@ public interface JiangSuProcurementProvinceClient extends JiangSuProcurementBasi
 
     /**
      * 退货申请（耗材）
-     * <p>
-     * 场景：同招采管理系统【订单管理-->退货】功能。
-     * </p>
+     * 场景：同招采管理系统【订单管理-退货】功能。
      *
      * @param parameter 请求参数数据部分不能为空
      * @return 退货结果（包含成功和失败的明细列表）

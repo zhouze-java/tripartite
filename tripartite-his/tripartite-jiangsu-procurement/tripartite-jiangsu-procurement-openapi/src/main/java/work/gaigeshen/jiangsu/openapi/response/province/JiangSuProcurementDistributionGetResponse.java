@@ -9,7 +9,6 @@ import java.util.List;
  * H009 获取配送信息出参
  *
  * @author zhouze
- * @date 2025/05/22
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

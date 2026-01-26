@@ -11,7 +11,6 @@ import java.util.List;
  * 场景：对于状态为已配送待收货且院内无配送信息的订单明细，可获取相关物流信息。
  *
  * @author zhouze
- * @date 2025/05/22
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

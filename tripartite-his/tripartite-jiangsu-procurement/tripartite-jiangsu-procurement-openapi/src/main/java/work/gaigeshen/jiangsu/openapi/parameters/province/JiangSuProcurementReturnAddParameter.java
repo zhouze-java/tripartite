@@ -8,10 +8,9 @@ import java.util.List;
 
 /**
  * H011 退货入参
- * 场景：同招采管理系统【订单管理-->退货】功能
+ * 场景：同招采管理系统【订单管理-退货】功能
  *
  * @author zhouze
- * @date 2025/05/22
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
