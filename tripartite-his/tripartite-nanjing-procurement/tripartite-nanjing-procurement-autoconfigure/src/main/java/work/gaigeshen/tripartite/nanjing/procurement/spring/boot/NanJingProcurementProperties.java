@@ -1,4 +1,4 @@
-package work.gaigeshen.tripartite.nanjing.procurement.spring.boot.autoconfigure;
+package work.gaigeshen.tripartite.nanjing.procurement.spring.boot;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
