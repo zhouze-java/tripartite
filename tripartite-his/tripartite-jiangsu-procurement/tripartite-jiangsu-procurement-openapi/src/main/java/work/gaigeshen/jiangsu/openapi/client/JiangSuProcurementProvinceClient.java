@@ -71,4 +71,17 @@ public interface JiangSuProcurementProvinceClient extends JiangSuProcurementBasi
             throws JiangSuProcurementClientException {
         return execute(parameter, JiangSuProcurementOrderSubmitResponse.class, "/order/submit");
     }
+
+    /**
+     * 获取订单明细信息（耗材）
+     *
+     * @param parameter 请求参数数据部分不能为空
+     * @return 订单明细信息查询结果
+     * @throws JiangSuProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default JiangSuOrderDetailGetResponse getOrderDetail(JiangSuOrderDetailGetParameter parameter)
+            throws JiangSuProcurementClientException {
+        return execute(parameter, JiangSuOrderDetailGetResponse.class, "/order/detail/get");
+    }
+
 }
