@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author gaigeshen
  */
-@ConfigurationProperties("jiangsu.procurement")
+@ConfigurationProperties("jiangsu.online")
 @Data
 public class JiangSuOnlineProperties {
 
