@@ -2,14 +2,8 @@ package work.gaigeshen.jiangsu.openapi.client;
 
 
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementClientException;
-import work.gaigeshen.jiangsu.openapi.parameters.province.JiangSuProcurementDirectoryUsedListParams;
-import work.gaigeshen.jiangsu.openapi.parameters.province.JiangSuProcurementOrderCreateParameter;
-import work.gaigeshen.jiangsu.openapi.parameters.province.JiangSuProcurementOrderDetailAddParameter;
-import work.gaigeshen.jiangsu.openapi.parameters.province.JiangSuProcurementOrderSubmitParameter;
-import work.gaigeshen.jiangsu.openapi.response.province.JiangSuProcurementDirectoryUsedListResponse;
-import work.gaigeshen.jiangsu.openapi.response.province.JiangSuProcurementOrderCreateResponse;
-import work.gaigeshen.jiangsu.openapi.response.province.JiangSuProcurementOrderDetailAddResponse;
-import work.gaigeshen.jiangsu.openapi.response.province.JiangSuProcurementOrderSubmitResponse;
+import work.gaigeshen.jiangsu.openapi.parameters.province.*;
+import work.gaigeshen.jiangsu.openapi.response.province.*;
 
 /**
  * 江苏两定平台客户端，此客户端只针对省采类型
@@ -28,6 +22,18 @@ public interface JiangSuProcurementProvinceClient extends JiangSuProcurementBasi
     default JiangSuProcurementDirectoryUsedListResponse listUsedDirectories(JiangSuProcurementDirectoryUsedListParams parameter)
             throws JiangSuProcurementClientException {
         return execute(parameter, JiangSuProcurementDirectoryUsedListResponse.class, "/hospitalProcurecatalog/get");
+    }
+
+    /**
+     * 获取国家码
+     *
+     * @param parameter 请求参数数据部分不能为空
+     * @return 响应结果不为空
+     * @throws JiangSuProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default JiangSuProcurementNationCodeQueryResponse listNationCodeSeq(JiangSuProcurementNationCodeSeqQueryParameter parameter)
+            throws JiangSuProcurementClientException {
+        return execute(parameter, JiangSuProcurementNationCodeQueryResponse.class, "/hospitalNationGoodsCode/get");
     }
 
     /**
@@ -51,7 +57,7 @@ public interface JiangSuProcurementProvinceClient extends JiangSuProcurementBasi
      */
     default JiangSuProcurementOrderDetailAddResponse addOrderDetail(JiangSuProcurementOrderDetailAddParameter parameter)
             throws JiangSuProcurementClientException {
-        return execute(parameter, JiangSuProcurementOrderDetailAddResponse.class, "/orderDetail/add");
+        return execute(parameter, JiangSuProcurementOrderDetailAddResponse.class, "/orderdetail/add");
     }
 
     /**
@@ -65,4 +71,17 @@ public interface JiangSuProcurementProvinceClient extends JiangSuProcurementBasi
             throws JiangSuProcurementClientException {
         return execute(parameter, JiangSuProcurementOrderSubmitResponse.class, "/order/submit");
     }
+
+    /**
+     * 获取订单明细信息（耗材）
+     *
+     * @param parameter 请求参数数据部分不能为空
+     * @return 订单明细信息查询结果
+     * @throws JiangSuProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default JiangSuOrderDetailGetResponse getOrderDetail(JiangSuOrderDetailGetParameter parameter)
+            throws JiangSuProcurementClientException {
+        return execute(parameter, JiangSuOrderDetailGetResponse.class, "/order/detail/get");
+    }
+
 }
