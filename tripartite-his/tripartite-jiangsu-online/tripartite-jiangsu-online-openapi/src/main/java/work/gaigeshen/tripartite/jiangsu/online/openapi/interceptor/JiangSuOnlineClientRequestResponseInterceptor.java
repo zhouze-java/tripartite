@@ -121,10 +121,10 @@ public class JiangSuOnlineClientRequestResponseInterceptor extends AbstractInter
         } catch (Exception e) {
             throw new InterceptingException("update request signature error", e);
         }
-        log.info("REQUEST URI: {}", request.url());
-        log.info("REQUEST METHOD: {}", request.method());
-        log.info("REQUEST HEADERS: {}", request.headers());
-        log.info("REQUEST BODY: {}", new String(request.bodyBytes(), StandardCharsets.UTF_8));
+        log.info("JIANGSU ONLINE REQUEST URI: {}", request.url());
+        log.info("JIANGSU ONLINE REQUEST METHOD: {}", request.method());
+        log.info("JIANGSU ONLINE REQUEST HEADERS: {}", request.headers());
+        log.info("JIANGSU ONLINE REQUEST BODY: {}", new String(request.bodyBytes(), StandardCharsets.UTF_8));
     }
 
     @Override
@@ -133,7 +133,7 @@ public class JiangSuOnlineClientRequestResponseInterceptor extends AbstractInter
         try {
             rawResponse = response.bodyString(StandardCharsets.UTF_8);
 
-            log.info("RESPONSE BODY: {}", rawResponse);
+            log.info("JIANGSU ONLINE RESPONSE BODY: {}", rawResponse);
         } catch (IOException e) {
             throw new InterceptingException("could not read raw response", e);
         }

@@ -99,7 +99,7 @@ public class JiangSuDailyInBoundData implements JiangSuOnlineInputData {
         /**
          * 省平台产品ID
          */
-        private Integer prov_plaf_prod_id;
+        private String prov_plaf_prod_id;
 
         /**
          * 是否应急采购
