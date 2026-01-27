@@ -81,7 +81,7 @@ public interface JiangSuProcurementProvinceClient extends JiangSuProcurementBasi
      */
     default JiangSuOrderDetailGetResponse getOrderDetail(JiangSuOrderDetailGetParameter parameter)
             throws JiangSuProcurementClientException {
-        return execute(parameter, JiangSuOrderDetailGetResponse.class, "/order/detail/get");
+        return execute(parameter, JiangSuOrderDetailGetResponse.class, "/orderdetail/get");
     }
 
     /**
