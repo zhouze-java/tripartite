@@ -30,8 +30,8 @@ public class JiangSuOnlineAutoConfiguration {
     }
 
     @Bean
-    public JiangSuOnlineClients nanJingProcurementClients() {
-        JiangSuOnlineAccessTokenManager accessTokenManager = nanJingProcurementAccessTokenManager();
+    public JiangSuOnlineClients jiangSuOnlineClients() {
+        JiangSuOnlineAccessTokenManager accessTokenManager = jiangSuOnlineAccessTokenManager();
         JiangSuOnlineClientCreator hisProcurementClientCreator = new DefaultJiangSuOnlineClientCreator(accessTokenManager);
         Collection<JiangSuOnlineBasicClient> hisProcurementClients = new ArrayList<>();
         for (JiangSuOnlineProperties.Client client : jiangSuOnlineProperties.getClients()) {
@@ -58,20 +58,20 @@ public class JiangSuOnlineAutoConfiguration {
     }
 
     @Bean(destroyMethod = "shutdown")
-    public JiangSuOnlineAccessTokenManager nanJingProcurementAccessTokenManager() {
+    public JiangSuOnlineAccessTokenManager jiangSuOnlineAccessTokenManager() {
         return new DefaultJiangSuOnlineAccessTokenManager(
-                nanJingProcurementAccessTokenStore(), nanJingProcurementAccessTokenRefresher()
+                jiangSuOnlineAccessTokenStore(), jiangSuOnlineAccessTokenRefresher()
         );
     }
 
     @Bean
-    public JiangSuOnlineAccessTokenRefresher nanJingProcurementAccessTokenRefresher() {
+    public JiangSuOnlineAccessTokenRefresher jiangSuOnlineAccessTokenRefresher() {
         return new DefaultJiangSuOnlineAccessTokenRefresher(
-                (cfg, oat) -> nanJingProcurementClients().getClientOrCreate(cfg));
+                (cfg, oat) -> jiangSuOnlineClients().getClientOrCreate(cfg));
     }
 
     @Bean
-    public JiangSuOnlineAccessTokenStore nanJingProcurementAccessTokenStore() {
+    public JiangSuOnlineAccessTokenStore jiangSuOnlineAccessTokenStore() {
         return new DefaultJiangSuOnlineAccessTokenStore();
     }
 }
