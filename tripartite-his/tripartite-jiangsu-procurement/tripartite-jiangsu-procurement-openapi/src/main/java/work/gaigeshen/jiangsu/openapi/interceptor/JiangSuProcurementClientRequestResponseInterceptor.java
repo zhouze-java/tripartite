@@ -67,6 +67,10 @@ public class JiangSuProcurementClientRequestResponseInterceptor extends Abstract
         }
         Map<String, Object> decodedResponse = JsonUtils.decodeObject(rawResponse);
 
+        if (Objects.isNull(decodedResponse.get("returnCode"))) {
+            decodedResponse.put("returnCode", "1");
+        }
+
         // 处理令牌没有过期的情况
         if ("9".equals(String.valueOf(decodedResponse.get("returnCode")))) {
             decodedResponse.put("returnCode", "1");
