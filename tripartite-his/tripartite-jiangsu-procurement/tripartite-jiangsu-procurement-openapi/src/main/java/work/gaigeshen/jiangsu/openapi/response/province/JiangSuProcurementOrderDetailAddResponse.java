@@ -79,7 +79,7 @@ public class JiangSuProcurementOrderDetailAddResponse extends AbstractJiangSuPro
         /**
          * 错误码
          */
-        private String errorcode;
+        private String errorCode;
 
         /**
          * 错误原因说明
