@@ -187,7 +187,6 @@ public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
     @Getter
     public static class InputParameter {
 
-        @Parameter(name = "data")
         private final JiangSuOnlineInputData inputData;
 
         public InputParameter(JiangSuOnlineInputData inputData) {
