@@ -65,6 +65,11 @@ public class JiangSuProcurementOrderDetailAddResponse extends AbstractJiangSuPro
         private String hospitalOrderDetailId;
 
         /**
+         * 医保代码
+         */
+        private String nationGoodsCode;
+
+        /**
          * 错误详情列表
          */
         private List<ErrorDetail> errorDetailList;
@@ -79,7 +84,7 @@ public class JiangSuProcurementOrderDetailAddResponse extends AbstractJiangSuPro
         /**
          * 错误码
          */
-        private String errorcode;
+        private String errorCode;
 
         /**
          * 错误原因说明
