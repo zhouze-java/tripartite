@@ -1,5 +1,6 @@
 package work.gaigeshen.tripartite.jiangsu.online.openapi.parameters;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import work.gaigeshen.tripartite.core.parameter.converter.JsonParametersConverter;
@@ -21,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 )
 @Getter
 @Setter
-public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
+public class DefaultJiangSuOnlineTokenParameters implements JiangSuOnlineParameters {
 
     @Parameter(name = "infno")
     private final String interfaceCode;
@@ -135,9 +136,9 @@ public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
     private String cainfo;
 
     @Parameter(name = "input")
-    private final InputParameter inputParameter;
+    private final JiangSuOnlineInputData inputParameter;
 
-    public DefaultJiangSuOnlineParameters(JiangSuOnlineConfig jiangSuOnlineConfig, String interfaceCode, JiangSuOnlineInputData inputData) {
+    public DefaultJiangSuOnlineTokenParameters(JiangSuOnlineConfig jiangSuOnlineConfig, String interfaceCode, JiangSuOnlineInputData inputData) {
 
         if (Objects.isNull(interfaceCode)) {
             throw new IllegalArgumentException("interfaceCode cannot be null");
@@ -146,7 +147,7 @@ public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
             throw new IllegalArgumentException("inputData cannot be null");
         }
         this.interfaceCode = interfaceCode;
-        this.inputParameter = new InputParameter(inputData);
+        this.inputParameter = inputData;
 
         requireDefaultValue(jiangSuOnlineConfig);
 
@@ -180,24 +181,6 @@ public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
         this.encType = "";
 
     }
-
-    /**
-     * @author gaigeshen
-     */
-    @Getter
-    public static class InputParameter {
-
-        @Parameter(name = "data")
-        private final JiangSuOnlineInputData inputData;
-
-        public InputParameter(JiangSuOnlineInputData inputData) {
-            this.inputData = inputData;
-        }
-
-    }
-
-
-
 
     public static class MsgIdGenerator {
 
