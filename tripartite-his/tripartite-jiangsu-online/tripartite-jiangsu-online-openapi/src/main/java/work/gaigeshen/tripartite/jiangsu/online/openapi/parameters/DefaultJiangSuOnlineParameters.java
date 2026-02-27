@@ -135,7 +135,7 @@ public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
     private String cainfo;
 
     @Parameter(name = "input")
-    private final InputParameter inputParameter;
+    private final JiangSuOnlineInputData inputParameter;
 
     public DefaultJiangSuOnlineParameters(JiangSuOnlineConfig jiangSuOnlineConfig, String interfaceCode, JiangSuOnlineInputData inputData) {
 
@@ -146,7 +146,7 @@ public class DefaultJiangSuOnlineParameters implements JiangSuOnlineParameters {
             throw new IllegalArgumentException("inputData cannot be null");
         }
         this.interfaceCode = interfaceCode;
-        this.inputParameter = new InputParameter(inputData);
+        this.inputParameter = inputData;
 
         requireDefaultValue(jiangSuOnlineConfig);
 

@@ -5,7 +5,6 @@ import work.gaigeshen.tripartite.jiangsu.online.openapi.client.JiangSuOnlineBasi
 import work.gaigeshen.tripartite.jiangsu.online.openapi.config.JiangSuOnlineConfig;
 import work.gaigeshen.tripartite.jiangsu.online.openapi.exception.JiangSuOnlineAccessTokenRefreshException;
 import work.gaigeshen.tripartite.jiangsu.online.openapi.parameters.DefaultJiangSuOnlineParameters;
-import work.gaigeshen.tripartite.jiangsu.online.openapi.parameters.DefaultJiangSuOnlineTokenParameters;
 import work.gaigeshen.tripartite.jiangsu.online.openapi.parameters.JiangSuOnlineAccessTokenInputData;
 import work.gaigeshen.tripartite.jiangsu.online.openapi.response.JiangSuOnlineAccessTokenResponse;
 
@@ -36,7 +35,7 @@ public class DefaultJiangSuOnlineAccessTokenRefresher implements JiangSuOnlineAc
                 config.getAppCode(), config.getAuthCode());
         JiangSuOnlineAccessTokenResponse response;
         try {
-            response = client.execute(new DefaultJiangSuOnlineTokenParameters(config, "ELS7001", inputData), JiangSuOnlineAccessTokenResponse.class, config.getAccessTokenUri());
+            response = client.execute(new DefaultJiangSuOnlineParameters(config, "ELS7001", inputData), JiangSuOnlineAccessTokenResponse.class, config.getAccessTokenUri());
         } catch (Exception e) {
             throw new JiangSuOnlineAccessTokenRefreshException("could not refresh access token", e)
                     .setCurrentAccessToken(oldAccessToken).setCanRetry(true);
