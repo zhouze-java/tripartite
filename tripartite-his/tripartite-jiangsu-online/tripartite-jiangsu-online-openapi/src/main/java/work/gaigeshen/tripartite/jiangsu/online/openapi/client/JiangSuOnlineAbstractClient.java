@@ -53,8 +53,8 @@ public abstract class JiangSuOnlineAbstractClient implements JiangSuOnlineBasicC
         }
         if (response instanceof AbstractJiangSuOnlineResponse) {
             AbstractJiangSuOnlineResponse abstractResponse = (AbstractJiangSuOnlineResponse) response;
-            if (!Objects.equals(abstractResponse.getReturn_code(), 1)) {
-                throw new JiangSuOnlineClientException("[ " + abstractResponse.getReturn_code() + " ] " + abstractResponse.getReturn_message());
+            if (!Objects.equals(abstractResponse.getReturnCode(), 1)) {
+                throw new JiangSuOnlineClientException("[ " + abstractResponse.getReturnCode() + " ] " + abstractResponse.getReturnMsg());
             }
         }
         return response;

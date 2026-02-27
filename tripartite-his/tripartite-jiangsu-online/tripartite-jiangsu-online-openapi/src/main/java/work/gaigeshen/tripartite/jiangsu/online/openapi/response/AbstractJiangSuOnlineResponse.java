@@ -11,11 +11,11 @@ public abstract class AbstractJiangSuOnlineResponse implements JiangSuOnlineResp
     /**
      * 接口返回状态
      */
-    private Integer return_code;
+    private Integer returnCode;
 
     /**
      * 接口返回信息
      */
-    private String return_message;
+    private String returnMsg;
 
 }
