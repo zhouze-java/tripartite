@@ -71,6 +71,7 @@ public class JiangSuProcurementClientAccessTokenInterceptor extends JiangSuProcu
 
         String encode = JsonUtils.encode(bodyMap);
         String encodeBody = "params=" + encode;
+        log.info("encode body:{}", encodeBody);
         request.body(encodeBody.getBytes(StandardCharsets.UTF_8));
     }
 
