@@ -64,6 +64,7 @@ public class NanJingProcurementClientAccessTokenInterceptor extends NanJingProcu
         }
 
         String encode = JsonUtils.encode(bodyMap);
+        log.info("encode body:{}", encode);
         request.body(encode.getBytes(StandardCharsets.UTF_8));
     }
 
