@@ -99,6 +99,21 @@ public interface JiangSuProcurementProvinceClient extends JiangSuProcurementBasi
         return execute(parameter, JiangSuProcurementDistributionGetResponse.class, "/distribution/get");
     }
 
+    /**
+     * H010 入库
+     * <p>
+     * 场景：同招采管理系统中的 订单管理 收货 管理, 可解决医疗机构二次录入问题。
+     * </p>
+     *
+     * @param parameter 请求参数数据部分不能为空
+     * @return 入库操作结果
+     * @throws JiangSuProcurementClientException 执行请求或者执行业务发生异常
+     */
+    default JiangSuProcurementStorageAddResponse addStorage(JiangSuProcurementStorageAddParameter parameter)
+            throws JiangSuProcurementClientException {
+        // 请求路径根据你文档的 /storage/add 拼接
+        return execute(parameter, JiangSuProcurementStorageAddResponse.class, "/storage/add");
+    }
 
     /**
      * 退货申请（耗材）

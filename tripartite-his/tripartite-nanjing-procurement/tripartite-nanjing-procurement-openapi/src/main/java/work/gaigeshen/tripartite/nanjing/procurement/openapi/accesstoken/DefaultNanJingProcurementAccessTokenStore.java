@@ -22,7 +22,10 @@ public class DefaultNanJingProcurementAccessTokenStore implements NanJingProcure
     public boolean save(NanJingProcurementConfig config, NanJingProcurementAccessToken accessToken) throws NanJingProcurementAccessTokenStoreException {
         ArgumentValidate.notNull(config, "config cannot be null");
         ArgumentValidate.notNull(accessToken, "accessToken cannot be null");
-        return Objects.isNull(internalStore.put(config, accessToken));
+        boolean notExists = !internalStore.containsKey(config);
+        internalStore.replaceAll((key, value) -> accessToken);
+        internalStore.put(config, accessToken);
+        return notExists;
     }
 
     @Override

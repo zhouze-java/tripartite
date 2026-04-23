@@ -19,7 +19,7 @@ public class JiangSuProcurementDistributionGetParameter extends DefaultJiangSuPr
     /**
      * 获取指定页码的数据, 例如"1"、"2"、"3"等
      */
-    private String currentPageNumber;
+    private Integer currentPageNumber;
 
     /**
      * （非必填）医疗机构编号, 老系统冗余字段
