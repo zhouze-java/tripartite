@@ -6,6 +6,8 @@ import work.gaigeshen.jiangsu.openapi.accesstoken.JiangSuProcurementAccessTokenM
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
 import work.gaigeshen.jiangsu.openapi.exception.JiangSuProcurementClientCreationException;
 import work.gaigeshen.jiangsu.openapi.interceptor.JiangSuProcurementClientAccessTokenInterceptor;
+import work.gaigeshen.jiangsu.openapi.interceptor.JiangSuProcurementClientRateLimitInterceptor;
+import work.gaigeshen.tripartite.core.ratelimiter.RateLimiterService;
 import work.gaigeshen.tripartite.core.util.ArgumentValidate;
 
 import java.util.Objects;
@@ -23,9 +25,14 @@ public class DefaultJiangSuProcurementClientCreator implements JiangSuProcuremen
 
     private final JiangSuProcurementAccessTokenManager accessTokenManager;
 
-    public DefaultJiangSuProcurementClientCreator(JiangSuProcurementAccessTokenManager accessTokenManager) {
+    private final RateLimiterService rateLimiterService;
+
+    public DefaultJiangSuProcurementClientCreator(
+            JiangSuProcurementAccessTokenManager accessTokenManager, RateLimiterService rateLimiterService) {
         ArgumentValidate.notNull(accessTokenManager, "accessTokenManager cannot be null");
+        ArgumentValidate.notNull(rateLimiterService, "rateLimiterService cannot be null");
         this.accessTokenManager = accessTokenManager;
+        this.rateLimiterService = rateLimiterService;
     }
 
     @Override
@@ -36,15 +43,17 @@ public class DefaultJiangSuProcurementClientCreator implements JiangSuProcuremen
         ArgumentValidate.notNull(config.getType(), "config type cannot be null");
 
         JiangSuProcurementAccessTokenClient accessTokenClient = JiangSuProcurementAccessTokenClient.create(config);
-        JiangSuProcurementClientAccessTokenInterceptor interceptor = new JiangSuProcurementClientAccessTokenInterceptor(accessTokenClient, accessTokenManager);
+        JiangSuProcurementClientRateLimitInterceptor rateLimitInterceptor =   new JiangSuProcurementClientRateLimitInterceptor(rateLimiterService);
+        JiangSuProcurementClientAccessTokenInterceptor accessTokenInterceptor =
+                new JiangSuProcurementClientAccessTokenInterceptor(accessTokenClient, accessTokenManager);
         log.info("creating his procurement client: {}", config);
 
         // 省采
         if (Objects.equals(PROVINCE_PURCHASE, config.getType())) {
-            return DefaultJiangSuProcurementProvinceClient.create(config, interceptor);
+            return DefaultJiangSuProcurementProvinceClient.create(config, rateLimitInterceptor, accessTokenInterceptor);
         }
         else if (Objects.equals(ONLINE_PURCHASE, config.getType())) {
-            return DefaultJiangSuProcurementOnlineClient.create(config, interceptor);
+            return DefaultJiangSuProcurementOnlineClient.create(config, rateLimitInterceptor, accessTokenInterceptor);
         }
         throw new JiangSuProcurementClientCreationException("config type [ " + config.getType() + " ] not supported");
     }

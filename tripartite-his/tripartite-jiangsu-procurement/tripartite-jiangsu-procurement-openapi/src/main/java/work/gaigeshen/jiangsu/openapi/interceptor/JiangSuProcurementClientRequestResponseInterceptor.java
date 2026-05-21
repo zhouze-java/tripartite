@@ -42,13 +42,13 @@ public class JiangSuProcurementClientRequestResponseInterceptor extends Abstract
         log.info("REQUEST URI: {}", request.url());
         log.info("REQUEST METHOD: {}", request.method());
         log.info("REQUEST HEADERS: {}", request.headers());
-        log.info("REQUEST BODY: {}", new String(request.bodyBytes(), StandardCharsets.UTF_8));
+       // log.info("REQUEST BODY: {}", new String(request.bodyBytes(), StandardCharsets.UTF_8));
 
         String bodyContent = new String(request.bodyBytes(), StandardCharsets.UTF_8);
         String decode = "";
         try {
             decode= URLDecoder.decode(bodyContent.replaceFirst("params=", ""), "utf-8");
-            log.info("REQUEST BODY: {}", decode);
+         //   log.info("REQUEST BODY: {}", decode);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }

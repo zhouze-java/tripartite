@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import work.gaigeshen.jiangsu.openapi.accesstoken.*;
 import work.gaigeshen.jiangsu.openapi.client.*;
 import work.gaigeshen.jiangsu.openapi.config.JiangSuProcurementConfig;
+import work.gaigeshen.tripartite.core.ratelimiter.RateLimiterService;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,7 +33,8 @@ public class JiangSuProcurementAutoConfiguration {
     @Bean
     public JiangSuProcurementClients nanJingProcurementClients() {
         JiangSuProcurementAccessTokenManager accessTokenManager = jiangSuProcurementAccessTokenManager();
-        JiangSuProcurementClientCreator hisProcurementClientCreator = new DefaultJiangSuProcurementClientCreator(accessTokenManager);
+        JiangSuProcurementClientCreator hisProcurementClientCreator =
+                new DefaultJiangSuProcurementClientCreator(accessTokenManager, jiangSuProcurementRateLimiterService());
         Collection<JiangSuProcurementBasicClient> hisProcurementClients = new ArrayList<>();
         for (JiangSuProcurementProperties.Client client : jiangSuProcurementProperties.getClients()) {
             JiangSuProcurementConfig config = JiangSuProcurementConfig.builder()
@@ -71,5 +73,13 @@ public class JiangSuProcurementAutoConfiguration {
     @Bean
     public JiangSuProcurementAccessTokenStore jiangSuProcurementAccessTokenStore() {
         return new DefaultJiangSuProcurementAccessTokenStore();
+    }
+
+    /**
+     * 省采订单接口限流（/order/add、/orderdetail/add、/order/submit），各 URI 独立每秒 1 次
+     */
+    @Bean
+    public RateLimiterService jiangSuProcurementRateLimiterService() {
+        return RateLimiterService.create(1.0);
     }
 }
