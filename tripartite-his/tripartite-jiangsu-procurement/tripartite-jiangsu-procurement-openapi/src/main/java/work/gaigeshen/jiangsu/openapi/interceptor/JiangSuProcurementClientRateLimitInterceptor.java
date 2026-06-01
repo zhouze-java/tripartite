@@ -32,7 +32,8 @@ public class JiangSuProcurementClientRateLimitInterceptor implements Interceptor
             "/orderdetail/add",
             "/order/submit",
             "/order/add",
-            "/storage/add"
+            "/storage/add",
+            "/suppur/cancleOrder/hcCancle"
     ));
 
     private final RateLimiterService rateLimiterService;

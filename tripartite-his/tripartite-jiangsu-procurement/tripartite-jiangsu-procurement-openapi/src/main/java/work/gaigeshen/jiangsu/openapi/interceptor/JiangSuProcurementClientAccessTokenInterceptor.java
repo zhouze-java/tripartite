@@ -63,7 +63,9 @@ public class JiangSuProcurementClientAccessTokenInterceptor extends JiangSuProcu
             } catch (Exception e) {
                 throw new InterceptingException("could not get new access token", e);
             }
-            JiangSuProcurementAccessToken newAccessToken = JiangSuProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken());
+            long expiresInSeconds = JiangSuProcurementAccessTokenHelper.resolveExpiresInSeconds(response.getExpiresIn());
+            JiangSuProcurementAccessToken newAccessToken = JiangSuProcurementAccessTokenHelper.createAccessToken(
+                    config, response.getAccessToken(), expiresInSeconds);
             jiangSuProcurementAccessTokenManager.addNewAccessToken(config, newAccessToken);
 
             setRequestToken(bodyMap, newAccessToken);

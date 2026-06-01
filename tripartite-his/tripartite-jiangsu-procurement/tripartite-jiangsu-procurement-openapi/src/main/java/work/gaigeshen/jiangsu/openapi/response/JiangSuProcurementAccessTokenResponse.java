@@ -16,9 +16,9 @@ public class JiangSuProcurementAccessTokenResponse extends AbstractJiangSuProcur
     private String accessToken;
 
     /**
-     * 失效时间
+     * 剩余有效时长（秒）
      */
-    private String expiresIn;
+    private Long expiresIn;
 
     /**
      * 当前时间

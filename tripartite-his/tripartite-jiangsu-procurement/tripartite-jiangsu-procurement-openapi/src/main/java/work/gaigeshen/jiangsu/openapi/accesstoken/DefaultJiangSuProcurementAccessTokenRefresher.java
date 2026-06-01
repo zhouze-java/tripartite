@@ -40,7 +40,8 @@ public class DefaultJiangSuProcurementAccessTokenRefresher implements JiangSuPro
             throw new JiangSuProcurementAccessTokenRefreshException("could not refresh access token", e)
                     .setCurrentAccessToken(oldAccessToken).setCanRetry(true);
         }
-        return JiangSuProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken());
+        long expiresInSeconds = JiangSuProcurementAccessTokenHelper.resolveExpiresInSeconds(response.getExpiresIn());
+        return JiangSuProcurementAccessTokenHelper.createAccessToken(config, response.getAccessToken(), expiresInSeconds);
     }
 
     /**

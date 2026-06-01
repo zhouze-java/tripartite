@@ -13,7 +13,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 访问令牌管理器实现，创建此管理器的时候，会同时为存储器中所有的访问令牌创建并调度更新任务，这些任务的执行时间早于访问令牌过期时间十分钟
+ * 访问令牌管理器实现，创建此管理器的时候，会同时为存储器中所有的访问令牌创建并调度更新任务，
+ * 这些任务的执行时间早于访问令牌过期时间 {@link JiangSuProcurementAccessTokenHelper#ACCESS_TOKEN_REFRESH_ADVANCE_SECONDS} 秒
  *
  * @author gaigeshen
  */
@@ -99,7 +100,8 @@ public class DefaultJiangSuProcurementAccessTokenManager implements JiangSuProcu
 
     private void createAndScheduleUpdateTask(JiangSuProcurementConfig config, JiangSuProcurementAccessToken accessToken) {
         long remainingDuration = JiangSuProcurementAccessTokenHelper.getRemainingDuration(accessToken);
-        createAndScheduleUpdateTask(config, remainingDuration - 600);
+        long delaySeconds = remainingDuration - JiangSuProcurementAccessTokenHelper.ACCESS_TOKEN_REFRESH_ADVANCE_SECONDS;
+        createAndScheduleUpdateTask(config, Math.max(0, delaySeconds));
     }
 
     private void createAndScheduleUpdateTask(JiangSuProcurementConfig config, long delaySeconds) {

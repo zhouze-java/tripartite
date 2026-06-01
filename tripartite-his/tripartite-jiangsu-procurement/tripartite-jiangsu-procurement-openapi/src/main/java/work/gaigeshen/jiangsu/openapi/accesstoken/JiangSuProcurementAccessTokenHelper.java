@@ -15,6 +15,11 @@ public class JiangSuProcurementAccessTokenHelper {
      */
     public static final int DEFAULT_EXPIRES_IN_SECONDS = 1800;
 
+    /**
+     * 定时刷新提前量（秒）：平台规定剩余超过 5 分钟时不发新 token，故在过期前 3 分钟刷新
+     */
+    public static final int ACCESS_TOKEN_REFRESH_ADVANCE_SECONDS = 180;
+
     private JiangSuProcurementAccessTokenHelper() { }
 
     /**
@@ -39,16 +44,35 @@ public class JiangSuProcurementAccessTokenHelper {
      * @return 新的访问令牌
      */
     public static JiangSuProcurementAccessToken createAccessToken(JiangSuProcurementConfig config, String newAccessToken) {
+        return createAccessToken(config, newAccessToken, DEFAULT_EXPIRES_IN_SECONDS);
+    }
+
+    /**
+     * 按平台返回的剩余有效时长创建访问令牌
+     *
+     * @param expiresInSeconds 平台 {@code expiresIn}（秒），无效时使用 {@link #DEFAULT_EXPIRES_IN_SECONDS}
+     */
+    public static JiangSuProcurementAccessToken createAccessToken(
+            JiangSuProcurementConfig config, String newAccessToken, long expiresInSeconds) {
         ArgumentValidate.notNull(config, "config cannot be null");
         ArgumentValidate.notNull(newAccessToken, "newAccessToken cannot be null");
+        long effectiveExpiresIn = expiresInSeconds > 0 ? expiresInSeconds : DEFAULT_EXPIRES_IN_SECONDS;
+        long nowEpochSecond = System.currentTimeMillis() / 1000;
         JiangSuProcurementAccessToken.JiangSuProcurementAccessTokenBuilder builder = JiangSuProcurementAccessToken.builder();
         builder.accessToken(newAccessToken);
         builder.account(config.getAccount());
         builder.type(config.getType());
-        builder.expiresIn(DEFAULT_EXPIRES_IN_SECONDS);
-        builder.expiresTimestamp(System.currentTimeMillis() / 1000 + DEFAULT_EXPIRES_IN_SECONDS);
+        builder.expiresIn(effectiveExpiresIn);
+        builder.expiresTimestamp(nowEpochSecond + effectiveExpiresIn);
         builder.updateTime(new Date());
         return builder.build();
+    }
+
+    public static long resolveExpiresInSeconds(Long expiresIn) {
+        if (expiresIn == null || expiresIn <= 0) {
+            return DEFAULT_EXPIRES_IN_SECONDS;
+        }
+        return expiresIn;
     }
 
     /**
